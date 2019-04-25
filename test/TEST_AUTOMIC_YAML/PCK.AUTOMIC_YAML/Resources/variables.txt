@@ -2,3 +2,16 @@
 Resource          ../../../Env/default.txt
 
 *** Variables ***
+#---- Promptset Fields --------------------------------------------------------------------
+#--------Delete Data/Object/Array from YAML-------------------------------------------------
+${YAML_File_Path}    D:\\Data\\YAMLTestdata\\New1.YAML
+${YAML_Content}    {"firstName":"John","lastName":"Smith","isAlive":true,"age":27,"address":{"streetAddress":"21 2nd Street","city":"New York","state":"NY","postalCode":"10021-31005"}}
+${YAML_Path}      lastName
+${YAML_Path1}     firstName
+${YAML_Array}     phoneNumbers[0].type
+${YAML_Object}    address.streetAddress
+${YAML_Path_Not_Exist}    phone
+${Download_path}    D:\\Data\\YAMLTestdata\\Dwnld.YAML
+${Download_path1}    D:\\Data\\YAMLTestdata\\Dwnld1.YAML
+${Download_path2}    D:\\Data\\YAMLTestdata\\Dwnld2.YAML
+${Download_path3}    D:\\Data\\YAMLTestdata\\Dwnld3.YAML
