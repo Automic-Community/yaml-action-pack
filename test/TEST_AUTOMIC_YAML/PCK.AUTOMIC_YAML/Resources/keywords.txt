@@ -93,7 +93,7 @@ Action Object Variable Should Not Be Found
 
 Assert Success
     Action Report Should Be Found
-    Action Report Should Contain    RESTful job complete
+    Action Report Should Contain    EXECUTED SUCCESSFULLY
     Action Return Status Should Be    ${ENDED_OK}
     Action Return Code Should Be    ${RETURN_CODE_SUCCESS}
 
@@ -113,8 +113,3 @@ Init Action
     [Arguments]    ${actionName}
     Action Create    ${actionName}
     Set Overwrite Agent
-
-Connect To ServiceNow
-    Action Set    &UC4RB_SN_REST_END_POINT#    ${URL}
-    Action Set    &CONN_AUTH_BASIC_USERNAME#    ${Username}
-    Action Set    &CONN_AUTH_BASIC_PASSWORD#    ${Password}
