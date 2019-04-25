@@ -1,0 +1,4 @@
+*** Settings ***
+Resource          ../../../Env/default.txt
+
+*** Variables ***
