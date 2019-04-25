@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_YAML.PUB.INCLUDE.DELETE_TMP_FILE">
+<HEADER state="1">
+<Title>Delete Temporary file</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:  PUT_PROMPT_BUFFER AGENT# = &AGENT#
+:  PUT_PROMPT_BUFFER LOGIN# = &LOGIN#
+:  PUT_PROMPT_BUFFER  UC4RB_DIR_FILE_RM_FAIL# = "YES"
+:  PUT_PROMPT_BUFFER UC4RB_DIR_FILE_RM_NAME# = &UC4RB_TEMP_FILE_PATH#
+:  SET &UC4RB_YAML_OBJ# = "PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"
+:  SET &ACTOBJ# = ACTIVATE_UC_OBJECT(&UC4RB_YAML_OBJ#,WAIT)
+:  IF &ACTOBJ# = "0"
+:    SET &ERRNR# = SYS_LAST_ERR_NR()
+:    SET &ERRINS#  = SYS_LAST_ERR_INS()
+:    SET &MESSAGE# = GET_MSG_TXT(&ERRNR#,&ERRINS#)
+:    PRINT "Error while activating &UC4RB_YAML_OBJ# object :&MESSAGE#"
+:  ELSE
+:    SET &STATUS# = GET_UC_OBJECT_STATUS(,&ACTOBJ#,"RETCODE")
+:    P "EXECUTED OBJECT [&UC4RB_YAML_OBJ#] STATUS: &STATUS#"
+:    IF &STATUS# <> "0"
+:      PRINT "Error while executing &UC4RB_YAML_OBJ# object"
+:    ENDIF
+:  ENDIF]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

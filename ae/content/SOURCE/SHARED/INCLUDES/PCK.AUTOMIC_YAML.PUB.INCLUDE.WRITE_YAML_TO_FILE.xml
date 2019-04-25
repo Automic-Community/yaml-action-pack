@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_YAML.PUB.INCLUDE.WRITE_YAML_TO_FILE">
+<HEADER state="1">
+<Title>Write YAML to File</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[!  Get File path
+:   SET &AGENT_TEMPDIR# = GET_VAR('UC_EX_PATH_TEMP', &AGENT#)
+:   SET &UC4RB_TEMP_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"yaml_content-&$RUNID#.txt")
+:   SET &UC4RB_FILE_CONTENT# = &UC4RB_YAML_CONTENT#
+
+!  Creating file in the temp dir
+:   SET &HND# = CREATE_PROCESS(NEW)
+:   SET &RET# = PUT_PROCESS_LINE(&HND#, &UC4RB_FILE_CONTENT#)
+:   SET &RET# = WRITE_PROCESS(&HND#,&UC4RB_TEMP_FILE_PATH#,&AGENT#,&LOGIN#,OVERWRITE)
+:   IF &RET# <> 0
+:     PRINT "Error in writing file to path : &UC4RB_TEMP_FILE_PATH#"
+:   ENDIF
+:   CLOSE_PROCESS &HND#
+
+]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>
