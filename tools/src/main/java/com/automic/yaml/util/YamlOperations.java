@@ -122,25 +122,12 @@ public class YamlOperations implements Serializable {
 		}
 	}
 
-	public String remove(String filePath, String yamlString, String path, String downloadFilePath,
+	public String remove(String content, String path, String downloadFilePath,
 			boolean failOnException) throws AutomicException {
 
-		try {
-			if (StringUtils.isEmpty(filePath) && StringUtils.isEmpty(yamlString)) {
-
-				throw new AutomicException("Either YAML file or YAML content is required");
-			}
-			String input = "";
-
-			if (StringUtils.isNotEmpty(filePath)) {
-
-				input = YamlUtils.readYAMLFromFile(filePath);
-			} else {
-
-				input = YamlUtils.readYAMLFromContent(yamlString);
-			}
-
-			String updatedYamlString = YamlUtils.deleteFromYaml(input, path);
+		    try {
+			
+		    	String updatedYamlString = YamlUtils.deleteFromYaml(content, path);
 
 			if (StringUtils.isNotEmpty(downloadFilePath)) {
 
