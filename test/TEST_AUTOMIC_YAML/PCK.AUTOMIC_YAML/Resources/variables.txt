@@ -2,3 +2,29 @@
 Resource          ../../../Env/default.txt
 
 *** Variables ***
+#---- Promptset Fields --------------------------------------------------------------------------------------
+#----Get YAML Data-------------------------------------------------------------------------------------
+${YAMLFilePath}    D:\\Data\\YamlTestData\\new.yaml
+${YAMLContent}    firstName: John\nlastName: Smith\nisAlive: true\nage: 27
+${YAMLPath}      $.object.key
+${YAMLPath1}      $.lastname
+${YAML_Array}     $.object.array
+${YAML_Object}    $.object
+#----Insert YAML Data-------------------------------------------------------------------------------------
+${YAMLPath2}      $.lastname
+${YAMLArrayPath}    ww
+${YAMLObjectPath}    ee
+${Download_path}    D:\\Data\\YAMLTestdata\\Dwnld.YAML
+${Download_path1}    D:\\Data\\YAMLTestdata\\InsertInContent.YAML
+${Download_Path_Array}    D:\\Data\\YAMLTestdata\\InsertArray.YAML
+${Download_Path_Object}    D:\\Data\\YAMLTestdata\\InsertObject.YAML
+${InsertInYAMLContentPath}    $.firstname
+${ArrayKey}     ss
+${ArrayValue}     hh
+${ObjectKey}     ff
+${ObjectValue}     rr
+${Key}            number
+${Value}          123456
+${Key1}            number
+${Value1}          123456
+#----Update YAML Data-------------------------------------------------------------------------------------
