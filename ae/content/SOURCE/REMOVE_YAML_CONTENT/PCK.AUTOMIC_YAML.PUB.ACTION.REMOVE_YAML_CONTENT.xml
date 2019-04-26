@@ -457,7 +457,69 @@
 <MSCRI/>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC/>
+<DOC><![CDATA[= Action name =
+PCK.AUTOMIC_YAML.PUB.ACTION.REMOVE_YAML_CONTENT
+
+= General description =
+This action is used to remove YAML content from the given YAML element path. YAML element path can consist either data, array or object.
+
+= Failure Conditions =
+* If the user provides invalid YAML file path, invalid YAML content or invalid downloadPath.
+* If the user provides an invalid path to YAML element and set 'fail if path does not exist' Yes.
+
+= Inputs =
+- YAML File Path: Provide the full path to the YAML file.
+- YAML Content:   Provide YAML content or a variable that contains YAML content.
+- Path to YAML Element*: Provide the path to the YAML element to be removed.
+- Fail if path does not exist: Specify whether the action should Fail or Pass if the YAML Path does not exist.
+- Download Path: Specify a path to download the modified file.
+
+= Note =
+- c1: YAML File path and YAML content are mutual exclusive.
+
+= Behavior =
+- Provide "YAML File Path" and "Download Path" of the agent machine.
+- If the value entered in Download Path is not an absolute path, the modified file is downloaded to the agent directory.
+- The downloaded file will get overwritten if it already exists.
+
+=Return Value=
+UC4RB_YAML_DATA: Modified YAML Content after deleting content at given YAML element path.
+
+= Outputs =
+* Return code is 0 in case of success.
+* Return code is non-zero in case of failure.
+
+= Rollback =
+(none)
+
+= Logging =
+AE logs will be displayed in the AE report.
+
+= Example =
+- YAML File Path: D:\YAML\input.yml
+- YAML Content:
+
+---
+-  martin:
+    name: Martin D'vloper
+    job: Developer
+    skills:
+      - python
+      - perl
+      - pascal
+-  tabitha:
+    name: Tabitha Bitumen
+    job: Developer
+    skills:
+      - lisp
+      - fortran
+      - erlang
+
+- Path to YAML Element: $.martin.name
+- Fail if path does not exist: YES/NO
+- Download Path: D:\YAML\outputyaml.yml
+
+]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>
