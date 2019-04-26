@@ -50,7 +50,8 @@ public class RemoveYAMLAction extends AbstractYAMLAction {
 				YamlUtils.writeContentToFile(yamlDownloadPath, output);
 			}
 			
-			ConsoleWriter.writeln("UC4RB_FILE_CONTENT::=" + output);
+			ConsoleWriter.writeln("UC4RB_FILE_CONTENT::=========="+"\n" + output);
+			ConsoleWriter.writeln("========================");
 		} catch (Exception exception) {
 			ConsoleWriter.writeln(exception);
 			throw new AutomicException(exception.getMessage());

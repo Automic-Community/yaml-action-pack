@@ -132,13 +132,10 @@
 :ENDIF
 
 
-
 !------------------------------------------ Building java arguments --------------------------------------------------------------------------------------------
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
 : INC PCK.AUTOMIC_YAML.PUB.INCLUDE.ATTACH_RESOURCE
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.CHANGE_DIRECTORY_TO_AGENT_BIN
-
-
 
 ! Define action specific java options and values
 : SET &ACTION_NAME# = "RemoveYAMLAction"
@@ -153,6 +150,7 @@
 : ELSE
 :    INC PCK.AUTOMIC_YAML.PUB.INCLUDE.WRITE_YAML_TO_FILE
 :    SET &UC4RB_ESCAPED_STRING# = &UC4RB_TEMP_FILE_PATH#
+:    PUBLISH &UC4RB_TEMP_FILE_PATH#,,"TASK"
 : ENDIF
 
 : INC PCK.AUTOMIC_YAML.PUB.INCLUDE.ESCAPE_ARG_VALUE@WIN
