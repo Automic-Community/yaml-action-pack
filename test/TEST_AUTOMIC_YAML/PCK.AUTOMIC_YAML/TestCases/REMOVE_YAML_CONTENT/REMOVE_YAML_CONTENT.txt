@@ -11,49 +11,31 @@ Resource          ../../Resources/keywords.txt
 Resource          ../../Resources/variables.txt
 Resource          ../../Resources/actions.txt
 
-*** Test Cases ***    OK_NOK    YAMLFilePath         YAMLContent        PathToYAML                  FailIfPathNotExist    DownloadPath
+*** Test Cases ***    OK_NOK    YAMLFilePath         YAMLContent        PathToYAML       FailIfPathNotExist    DownloadPath
 Remove YAML Content when YAMLFilePath and PathToYAML are valid
                       [Tags]    main_scenarios
-                      OK        ${YAML_File_Path}    ${Empty}           ${YAML_Path}              YES                   ${Download_path}
-
-Remove YAML Content when YAMLContent and PathToYAML are valid
-                      OK        ${Empty}             ${YAML_Content}    ${YAML_Path1}             YES                   ${Download_path1}
+                      OK        ${YAML_File_Path}    ${Empty}           ${YAML_Path}     YES                   ${Download_path}
 
 Remove YAML Array when YAMLContent and PathToYAML are valid
-                      OK        ${YAML_File_Path}    ${Empty}           ${YAML_Array}             YES                   ${Download_path2}
-
-Remove YAML Object when YAMLContent and PathToYAML are valid
-                      OK        ${Empty}             ${YAML_Content}    ${YAML_Object}            YES                   ${Download_path2}
+                      OK        ${YAML_File_Path}    ${Empty}           ${YAML_Array}    YES                   ${Download_path2}
 
 Remove YAML Content with invalid YAMLFilePath
-                      NOK       Invalid              ${Empty}           ${YAML_Path}              YES                   ${Download_path3}
+                      NOK       Invalid              ${Empty}           ${YAML_Path}     YES                   ${Download_path3}
 
 Remove YAML Content with invalid YAMLContent
-                      NOK       ${Empty}             Invalid            ${YAML_Path}              YES                   ${Empty}
+                      NOK       ${Empty}             Invalid            ${YAML_Path}     YES                   ${Empty}
 
 Remove YAML Content with valid YAMLFilePath and invalid PathToYAML
-                      NOK       ${YAML_File_Path}    ${Empty}           Invalid                   YES                   ${Empty}
-
-Remove YAML Content with valid YAMLContent and invalid PathToYAML
-                      NOK       ${Empty}             ${YAML_Content}    Invalid                   YES                   ${Empty}
-
-Remove YAML Content with valid YAMLFilePath and empty PathToYAML
-                      NOK       ${YAML_File_Path}    ${Empty}           ${Empty}                  YES                   ${Empty}
-
-Remove YAML Content with valid YAMLContent and empty PathToYAML
-                      NOK       ${Empty}             ${YAML_Content}    ${Empty}                  YES                   ${Empty}
+                      NOK       ${YAML_File_Path}    ${Empty}           Invalid          YES                   ${Empty}
 
 Remove YAML Content with empty YAMLFilePath and YAMLContent
-                      NOK       ${Empty}             ${Empty}           ${YAML_Path}              YES                   ${Empty}
+                      NOK       ${Empty}             ${Empty}           ${YAML_Path}     YES                   ${Empty}
 
 Remove YAML Content with value in both YAMLFilePath and YAMLContent
-                      NOK       ${YAML_File_Path}    ${YAML_Content}    ${YAML_Path}              YES                   ${Empty}
-
-Remove YAML Content when valid YAML Path is not given and 'Fail if Path doesn't exist ' field is set to YES.
-                      NOK       ${YAML_File_Path}    ${Empty}           ${YAML_Path_Not_Exist}    YES                   ${Empty}
+                      NOK       ${YAML_File_Path}    ${YAML_Content}    ${YAML_Path}     YES                   ${Empty}
 
 Remove YAML Content when valid YAML Path is not given and 'Fail if Path doesn't exist ' field is set to YES and DownloadPath is invalid
-                      NOK       ${YAML_File_Path}    ${Empty}           ${YAML_Path}              YES                   Invalid
+                      NOK       ${YAML_File_Path}    ${Empty}           ${YAML_Path}     YES                   Invalid
 
 *** Keywords ***
 Startup
@@ -72,20 +54,18 @@ Remove YAML Content Template
     ...    -${DownloadPath}: This field specifies path to save updated YAML file.
     Generate String
     Init Action    ${_REMOVE_YAML_CONTENT_ACTION}
-    Run Keyword If    '${YAMLFilePath}' == 'Invalid'    Action Set    &UC4RB_YAML_FILE_PATH#    ${Generated_Name}_${Time}
-    ...    ELSE    Action Set    &UC4RB_YAML_FILE_PATH#    ${YAMLFilePath}
-    Run Keyword If    '${YAMLContent}' == 'Invalid'    Action Set    &UC4RB_YAML_CONTENT#    ${Generated_Name}_${Time}
-    ...    ELSE    Action Set    &UC4RB_YAML_CONTENT#    ${YAMLContent}
-    Run Keyword If    '${PathToYAML}' == 'Invalid'    Action Set    &UC4RB_YAML_ELEMENT_PATH#    ${Generated_Name}_${Time}
-    ...    ELSE    Action Set    &UC4RB_YAML_ELEMENT_PATH#    ${PathToYAML}
-    Action Set    &UC4RB_JSN_ACTION_FAIL#    ${UC4RB_YAML_FAIL}
-    Run Keyword If    '${DownloadPath}' == 'Invalid'    Action Set    &UC4RB_YAML_DOWNLOAD_PATH#    ${Generated_Name}_${Time}
-    ...    ELSE    Action Set    &UC4RB_YAML_DOWNLOAD_PATH#    ${DownloadPath}
+    Run Keyword If    '${YAMLFilePath}' == 'Invalid'    Action Set    &UC4RB_YAML_FILE_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_YAML_FILE_PATH#    ${YAMLFilePath}
+    Run Keyword If    '${YAMLContent}' == 'Invalid'    Action Set    &UC4RB_YAML_CONTENT#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_YAML_CONTENT#    ${YAMLContent}
+    Run Keyword If    '${PathToYAML}' == 'Invalid'    Action Set    &UC4RB_YAML_ELEMENT_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_YAML_ELEMENT_PATH#    ${PathToYAML}
+    Action Set    &UC4RB_YAML_FAIL#    ${FailIfPathNotExist}
+    Run Keyword If    '${DownloadPath}' == 'Invalid'    Action Set    &UC4RB_YAML_DOWNLOAD_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_YAML_DOWNLOAD_PATH#    ${DownloadPath}
     Action Execute
-    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success
-    ...    ELSE    Assert Failure
-    Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable Should Be Found    &UC4RB_YAML_DATA#
-    ...    ELSE    Action Object Variable Should Not Be Found    &UC4RB_YAML_DATA#
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE    Assert Failure
+    Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable Should Be Found    &UC4RB_YAML_DATA#    ELSE    Action Object Variable Should Not Be Found    &UC4RB_YAML_DATA#
 
 Teardown
     Log    *******End Test "Remove YAML Content"*******
