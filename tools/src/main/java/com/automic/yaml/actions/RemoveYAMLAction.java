@@ -43,14 +43,14 @@ public class RemoveYAMLAction extends AbstractYAMLAction {
 		prepareAndValidateInputs();
 		try {
 
-			output = yamlOperations.remove(content, yamlElementPath, yamlDownloadPath, isFail).toString();
+			output = yamlOperations.remove(content, yamlElementPath, yamlDownloadPath, isFail);
 			if(output==null)
 				output=content;
 			if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {
-				YamlUtils.writeContentToFile(yamlDownloadPath, output);
+				YamlUtils.writeContentToFile(yamlDownloadPath, output.toString());
 			}
 			
-			ConsoleWriter.writeln("UC4RB_FILE_CONTENT::=========="+"\n" + output);
+			ConsoleWriter.writeln("UC4RB_FILE_CONTENT::=========="+"\n" + output.toString());
 			ConsoleWriter.writeln("========================");
 		} catch (Exception exception) {
 			ConsoleWriter.writeln(exception);
