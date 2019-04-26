@@ -1,0 +1,88 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        UPDATE_YAML_CONTENT
+Test Template     UPDATE_YAML_CONTENT Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/Is_Arraywords.txt
+Resource          ../../Resources/Names.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    YAML_File_Path       YAML_Content       YAML_Path       Is_Array        Value       Download_Path
+UPDATE_YAML_CONTENT with all valid data with YAMLFilePath
+                      [Tags]    main_scenarios
+                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLPath}    ${Is_Array}     ${Value}    String       YES          ${Download_Path}
+
+UPDATE_YAML_CONTENT with all valid data with YAMLContent
+                      [Tags]    main_scenarios
+                      OK        ${EMPTY}           ${YAMLContent}    ${YAMLPath}    ${Is_Array}     ${Value}    String       YES          ${Download_Path}
+
+UPDATE_YAML_CONTENT with invalid YAMLFilePath
+                      NOK       INVALID            ${EMPTY}          ${YAMLPath}    ${Is_Array}     ${Value}    String       YES          ${Download_Path}
+
+UPDATE_YAML_CONTENT with invalid YAMLContent
+                      NOK       ${EMPTY}           INVALID           ${YAMLPath}    ${Is_Array}     ${Value}    String       YES          ${Download_Path}
+
+UPDATE_YAML_CONTENT with invalid YAMLPath
+                      NOK       ${YAMLFilePath}    ${EMPTY}          INVALID        ${Is_Array}     ${Value}    String       YES          ${Download_Path}
+
+UPDATE_YAML_CONTENT with invalid Is_Array
+                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLPath}    INVALID    ${Value}    String       YES          ${Download_Path}
+
+UPDATE_YAML_CONTENT with invalid value
+                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLPath}    ${Is_Array}     INVALID     String       YES          ${Download_Path}
+
+UPDATE_YAML_CONTENT with Overwrite as No
+                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLPath}    ${Is_Array}     ${Value}    String       NO           ${Download_Path}
+
+UPDATE_YAML_CONTENT with ValueType as Others
+                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLPath}    ${Is_Array}     ${Value}    Others       YES          ${Download_Path}
+
+UPDATE_YAML_CONTENT with Empty Value
+                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLPath}    ${Is_Array}     ${EMPTY}    String       YES          ${Download_Path}
+
+UPDATE_YAML_CONTENT with Empty Download Path
+                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLPath}    ${Is_Array}     ${EMPTY}    String       YES          ${EMPTY}
+
+UPDATE_YAML_CONTENT with Invalid Download Path
+                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLPath}    ${Is_Array}     ${EMPTY}    String       YES          INVALID
+
+*** Is_Arraywords ***
+Startup
+    Log    *******Start Test "UPDATE_YAML_CONTENT"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+UPDATE_YAML_CONTENT Template
+    [Arguments]    ${OK_NOK}    ${YAML_File_Path}    ${YAML_Content}    ${YAML_Path}    ${Is_Array}    ${Value}    ${Download_Path}
+    [Documentation]    This test tests the feature of UPDATE_YAML_CONTENT.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this Name should be OK or NOK.
+    ...    -${YAML_File_Path}: This field specifies an path that contains YAML content.
+    ...    -${YAML_Content}: This field specifies the YAML content to be updated.
+    ...    -${YAMLPath}: This field specifies path to data to add name/value pairs or update its value
+    ...    -${Is_Array}: This field specifies the name to add/update its value.
+    ...    -${Value}: This field specifies the value to be set to the YAML data.
+    ...    -${Download_Path}: This field Specify path to download modified file. E.g. D:\YAML\filename.YAML
+    Generate String
+    Init Action    ${UPDATE_YAML_CONTENT_ACTION}
+    Run Is_Arrayword If    '${YAML_File_Path}' == 'Invalid'    Action Set    &UC4RB_JSN_YAML_FILE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_JSN_YAML_FILE#    ${YAML_File_Path}
+    Run Is_Arrayword If    '${YAML_Content}' == 'Invalid'    Action Set    &UC4RB_JSN_YAML#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_JSN_YAML#    ${YAML_Content}
+    Run Is_Arrayword If    '${YAML_Path}' == 'Invalid'    Action Set    &UC4RB_JSN_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_JSN_PATH#    ${YAML_Path}
+    Run Is_Arrayword If    '${Is_Array}' == 'Invalid'    Action Set    &UC4RB_JSN_Is_Array#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_JSN_Is_Array#    ${Is_Array}
+    Run Is_Arrayword If    '${Value}' == 'Invalid'    Action Set    &UC4RB_JSN_VALUE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_JSN_VALUE#    ${Value}
+    Run Is_Arrayword If    '${Download_Path}' == 'Invalid'    Action Set    &UC4RB_JSN_DWNLD_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_JSN_DWNLD_PATH#    ${Download_Path}
+    Action Execute
+    Run Is_Arrayword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE    Assert Failure
+    Run Is_Arrayword If    '${OK_NOK}' == 'OK'    Action Object Variable Should Be Found    &UC4RB_JSN_UPDATED_YAML#    ELSE    Action Object Variable Should Not Be Found    &UC4RB_JSN_UPDATED_YAML#
+
+Teardown
+    Log    *******End Test "UPDATE_YAML_CONTENT"*******
