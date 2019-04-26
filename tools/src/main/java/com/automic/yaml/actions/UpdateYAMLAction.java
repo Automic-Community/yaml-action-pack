@@ -60,7 +60,7 @@ public class UpdateYAMLAction extends AbstractYAMLAction {
 
 	private void prepareAndValidateInputs() throws AutomicException {
 		if (StringUtils.isEmpty(yamlElementPath)) {
-			throw new AutomicException(ExceptionConstants.UPDATE_YAML_PATH_EMPTY_MSG);
+			throw new AutomicException(ExceptionConstants.YAML_PATH_EMPTY_MSG);
 		}
 		if (!StringUtils.isEmpty(yamlDownloadPath)) {
 			try {
