@@ -3,8 +3,6 @@ package com.automic.yaml.actions;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.automic.yaml.base.AbstractYAMLAction;
 import com.automic.yaml.constants.Constants;
 import com.automic.yaml.constants.ExceptionConstants;
@@ -22,10 +20,9 @@ import com.automic.yaml.util.YamlUtils;
 public class UpdateYAMLAction extends AbstractYAMLAction {
 
 	private String yamlElementPath;
-	private boolean isArray;
+	private boolean isArray  = false;
 	private String value;
 	private String yamlDownloadPath;
-	private String output;
 
 	private YamlOperations yamlOperations = new YamlOperations();
 
@@ -45,13 +42,14 @@ public class UpdateYAMLAction extends AbstractYAMLAction {
 		prepareAndValidateInputs();
 		try {
 
-			output = yamlOperations.update(content, yamlElementPath, value, isArray, yamlDownloadPath);
+			String output = yamlOperations.update(content, yamlElementPath, value, isArray);
 
 			if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {
 				YamlUtils.writeContentToFile(yamlDownloadPath, output);
 			}
 
-			ConsoleWriter.writeln(Constants.UPDATE_RUN_SUCESSFULL_MSG);
+			ConsoleWriter.writeln("UPDATED_YAML::==========\n"+output);
+			ConsoleWriter.writeln("========================");
 		} catch (Exception exception) {
 			ConsoleWriter.writeln(exception);
 			throw new AutomicException(exception.getMessage());
@@ -59,10 +57,18 @@ public class UpdateYAMLAction extends AbstractYAMLAction {
 	}
 
 	private void prepareAndValidateInputs() throws AutomicException {
-		if (StringUtils.isEmpty(yamlElementPath)) {
+		yamlElementPath = getOptionValue(Constants.YAML_ELEMENT_PATH);
+
+		if (!CommonUtil.checkNotEmpty(yamlElementPath)) {
 			throw new AutomicException(ExceptionConstants.UPDATE_YAML_PATH_EMPTY_MSG);
 		}
-		if (!StringUtils.isEmpty(yamlDownloadPath)) {
+
+		isArray = CommonUtil.convert2Bool(getOptionValue(Constants.IS_ARRAY));
+		
+		value = getOptionValue(Constants.VALUE);
+
+		yamlDownloadPath = getOptionValue(Constants.YAML_DOWNLOAD_PATH);
+		if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {
 			try {
 
 				File file = new File(yamlDownloadPath);

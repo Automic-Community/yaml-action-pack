@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_YAML.PRV.INCLUDE.PROCESS_REPORT">
+<HEADER state="1">
+<Title>Process Report</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
+:SET &UC4RB_YAML_UPDATED_YAML# = ""
+:SET &FLAG# = 0
+:SET &SEARCH_START_STR# = "UPDATED_YAML::=========="
+:SET &SEARCH_END_STR# = "========================"
+:IF &STATUS# EQ 0
+:    SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP")
+:    PROCESS &HND#
+:         SET &VALUE# = GET_PROCESS_LINE(&HND#)
+:         IF &FLAG# EQ 0
+:           SET &FLAG# = STR_FIND(&VALUE#, &SEARCH_START_STR#)
+:           ELSE
+:             SET &READ_END_FLAG# = STR_FIND(&VALUE#, &SEARCH_END_STR#)
+:             IF &READ_END_FLAG# NE 0
+:                TERM_PROCESS
+:             ENDIF
+:             SET &NL# = UC_CRLF()
+:             SET  &UC4RB_YAML_UPDATED_YAML# = STR_CAT(&UC4RB_YAML_UPDATED_YAML#,"&VALUE#&NL#")
+:         ENDIF
+:   ENDPROCESS
+:   CLOSE_PROCESS &HND#
+:ENDIF
+:PUBLISH &UC4RB_YAML_UPDATED_YAML#,,"WORKFLOW"]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

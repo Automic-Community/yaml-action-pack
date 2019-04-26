@@ -13,7 +13,7 @@ import com.automic.yaml.util.ConsoleWriter;
  *
  */
 public class ClientHelper {
-    private static final String ABSOLUTEPATH = "com.automic.kafka.actions";
+    private static final String ABSOLUTEPATH = "com.automic.yaml.actions";
 
     private ClientHelper() {
     }
