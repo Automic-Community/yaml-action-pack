@@ -20,20 +20,13 @@ public class ExceptionConstants {
 	public static final String INVALID_YAML_FORMAT_MSG = "Invalid YAML Format.\n";
 	public static final String UNABLE_UPDATE_CONTENT_MSG = "Unable to update YAML Content.\n";
 	public static final String INVALID_FORMAT_FOR_CONVERSION = "Invalid Format for Conversion, either provide JSON or YAML";
-<<<<<<< Updated upstream
-	public static final String YAML_PATH_EMPTY_MSG = "Path to YAML element is empty.";
-=======
-<<<<<<< Updated upstream
-	public static final String UPDATE_YAML_PATH_EMPTY_MSG = "Path to YAML emlement is empty.";
-=======
+
 	public static final String YAML_PATH_EMPTY_MSG = "Path to YAML element is empty.";
 	public static final String YAML_TARGET_POSITION_EMPTY_MSG = "Target location to add new element is empty.";
 	public static final String YAML_KEY_EMPTY_MSG = "Provided Key is empty.";
 	public static final String YAML_VALUE_EMPTY_MSG = "Provided Value is empty.";
 	
 	
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 	public static final String UNABLE_TO_CREATE_FILE = "Error in creating file at Download Path : [%s].";
 	
 	
