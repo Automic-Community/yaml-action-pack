@@ -475,7 +475,7 @@ This action is used to remove YAML content from the given YAML element path. YAM
 - Download Path: Specify a path to download the modified file.
 
 = Note =
-- c1: YAML File path and YAML content are mutual exclusive.
+- YAML File path and YAML content are mutual exclusive.
 
 = Behavior =
 - Provide "YAML File Path" and "Download Path" of the agent machine.
