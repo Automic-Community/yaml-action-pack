@@ -52,7 +52,7 @@ public class UpdateYAMLAction extends AbstractYAMLAction {
 			ConsoleWriter.writeln("========================");
 		} catch (Exception exception) {
 			ConsoleWriter.writeln(exception);
-			throw new AutomicException(exception.getMessage());
+			throw new AutomicException("YAML could not be updated successfully.");
 		}
 	}
 
@@ -66,6 +66,9 @@ public class UpdateYAMLAction extends AbstractYAMLAction {
 		isArray = CommonUtil.convert2Bool(getOptionValue(Constants.IS_ARRAY));
 		
 		value = getOptionValue(Constants.VALUE);
+		if (!CommonUtil.checkNotEmpty(value)) {
+			throw new AutomicException(ExceptionConstants.VALUE_CANNOT_BE_EMPTY);
+		}
 
 		yamlDownloadPath = getOptionValue(Constants.YAML_DOWNLOAD_PATH);
 		if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {

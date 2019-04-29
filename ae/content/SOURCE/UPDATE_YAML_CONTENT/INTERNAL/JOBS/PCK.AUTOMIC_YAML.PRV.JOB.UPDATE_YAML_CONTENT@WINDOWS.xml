@@ -133,6 +133,7 @@
 !------------------------------------------ Building java arguments --------------------------------------------------------------------------------------------
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
 : INC PCK.AUTOMIC_YAML.PUB.INCLUDE.ATTACH_RESOURCE
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.CHANGE_DIRECTORY_TO_AGENT_BIN
 
 ! Define action specific java options and values
 : SET &ACTION_NAME# = "UpdateYAMLAction"
