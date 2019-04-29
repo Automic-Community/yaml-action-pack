@@ -31,7 +31,7 @@ public class GetYAMLAction extends AbstractYAMLAction {
 				valueExists = false;
 			}
 			ConsoleWriter.writeln(
-					Constants.DEFAULT_VARIABLE + "::=" + output);
+					Constants.DEFAULT_VARIABLE + "::=\n" + output);
 			ConsoleWriter.writeln(Constants.VALUE_EXISTS + "::=" + valueExists);
 			ConsoleWriter.writeln("========================");
 		} catch (Exception exception) {

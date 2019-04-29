@@ -31,6 +31,7 @@
 :             ENDIF
 :             SET &NL# = UC_CRLF()
 :             SET  &UC4RB_YAML_DATA# = STR_CAT(&UC4RB_YAML_DATA#,"&VALUE#&NL#")
+:             SET &UC4RB_YAML_DATA# = STR_TRIM(&UC4RB_YAML_DATA#)
 :          ENDIF
 :   ENDPROCESS
 :   CLOSE_PROCESS &HND#
