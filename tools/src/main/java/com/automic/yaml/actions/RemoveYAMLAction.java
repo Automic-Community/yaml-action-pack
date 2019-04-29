@@ -24,7 +24,7 @@ public class RemoveYAMLAction extends AbstractYAMLAction {
 	private String yamlElementPath;
 	private boolean isFail=true;
 	private String yamlDownloadPath;
-	private String output;
+	
 
 	private YamlOperations yamlOperations = new YamlOperations();
 
@@ -40,33 +40,34 @@ public class RemoveYAMLAction extends AbstractYAMLAction {
 	
 	@Override
 	protected void executeSpecific() throws AutomicException {
+		String output=null;
 		prepareAndValidateInputs();
 		try {
 
-			output = yamlOperations.remove(content, yamlElementPath, yamlDownloadPath, isFail);
+			output = yamlOperations.remove(content, yamlElementPath, isFail);
 			if(output==null)
 				output=content;
 			if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {
-				YamlUtils.writeContentToFile(yamlDownloadPath, output.toString());
+				YamlUtils.writeContentToFile(yamlDownloadPath, output);
 			}
 			
-			ConsoleWriter.writeln("UC4RB_FILE_CONTENT::=========="+"\n" + output.toString());
+			ConsoleWriter.writeln("UC4RB_CONTENT::=========="+"\n" + output);
 			ConsoleWriter.writeln("========================");
 		} catch (Exception exception) {
 			ConsoleWriter.writeln(exception);
-			throw new AutomicException(exception.getMessage());
+			throw new AutomicException("Exception occurred while removing data from YAML");
 		}
 	}
 
 	private void prepareAndValidateInputs() throws AutomicException {
 		yamlElementPath = getOptionValue(Constants.YAML_ELEMENT_PATH);
-		if (StringUtils.isEmpty(yamlElementPath)) {
+		if (!CommonUtil.checkNotEmpty(yamlElementPath)) {
 			throw new AutomicException(ExceptionConstants.UPDATE_YAML_PATH_EMPTY_MSG);
 		}
 		
 		isFail=CommonUtil.convert2Bool(getOptionValue(Constants.IS_FAIL));
 		yamlDownloadPath=getOptionValue(Constants.YAML_DOWNLOAD_PATH);
-		if (!StringUtils.isEmpty(yamlDownloadPath)) {
+		if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {
 			try {
 
 				File file = new File(yamlDownloadPath);

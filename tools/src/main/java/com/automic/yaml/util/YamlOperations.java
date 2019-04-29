@@ -122,18 +122,12 @@ public class YamlOperations implements Serializable {
 		}
 	}
 
-	public String remove(String content, String path, String downloadFilePath,
-			boolean failOnException) throws AutomicException {
+	public String remove(String content, String path, boolean failOnException) throws AutomicException {
 
 		    try {
 			
 		    	String updatedYamlString = YamlUtils.deleteFromYaml(content, path);
-
-			if (StringUtils.isNotEmpty(downloadFilePath)) {
-
-				YamlUtils.writeContentToFile(downloadFilePath, updatedYamlString);
-			}
-			return updatedYamlString;
+		    	return updatedYamlString;
 		} catch (JsonParseException e) {
 
 			throw new AutomicException("Invalid YAML content");

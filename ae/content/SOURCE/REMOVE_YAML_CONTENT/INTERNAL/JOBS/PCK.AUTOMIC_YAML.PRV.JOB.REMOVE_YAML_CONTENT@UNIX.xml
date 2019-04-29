@@ -109,10 +109,7 @@
 <PSCRI><![CDATA[:INC PCK.ITPA_SHARED.PUB.INCLUDE.START_STOP_JOB_ACCORDING_TO_AGENT_OS]]></PSCRI>
 </PRE_SCRIPT>
 <SCRIPT mode="1" state="1">
-<MSCRI><![CDATA[: DEFINE &STRING_ARR#, string, 30
-: INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_HEADER
-
-! Validating Input
+<MSCRI><![CDATA[! Validating Input
 :SET &COUNT# = 0
 :IF &UC4RB_YAML_FILE_PATH# EQ ""
 :   SET &COUNT# = &COUNT# + 1
@@ -123,6 +120,9 @@
 :IF &COUNT# NE 1
 :       STOP MSG, 50, "Please provide either YAML file path or content."
 :ENDIF
+
+: DEFINE &STRING_ARR#, string, 30
+: INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_HEADER
 
 !------------------------------------------ Building java arguments --------------------------------------------------------------------------------------------
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
@@ -184,7 +184,7 @@
 <LoginFsc/>
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
-<OSCRI><![CDATA[: INC PCK.AUTOMIC_YAML.PRV.INCLUDE.PUBLISH_DATA]]></OSCRI>
+<OSCRI><![CDATA[: INC PCK.AUTOMIC_YAML.PRV.INCLUDE.PUBLISH_REMOVE_DATA]]></OSCRI>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC/>
