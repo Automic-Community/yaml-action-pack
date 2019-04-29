@@ -7,7 +7,66 @@
 <OH_SubType/>
 </HEADER>
 <DOCU_Docu state="1" type="text">
-<DOC/>
+<DOC><![CDATA[About the Package
+An action pack for doing the operation on YAML File.
+
+=Setup=
+* This Action pack uses Windows/Unix Agent.
+* The Agent should be able to access YAML File.
+
+=Common Inputs=
+YAML File Path: Provide the full path to the YAML file. E.g. D:\Yaml\Input.yml
+YAML Content:   Provide YAML content or a variable that contains YAML content.
+
+Following actions are supported.
+
+* Action name: PCK.AUTOMIC_YAML.PUB.ACTION.REMOVE_YAML_CONTENT
+* Action Description: This action is used to remove YAML content from the given YAML element path. YAML element path can consist either data, array or object.
+
+* Action name: PCK.AUTOMIC_YAML.PUB.ACTION.CONVERT_YAML_TO_FROM_JSON
+* Action Description: This action will convert YAML to JSON and vice versa.
+
+e.g.
+Sample YAML:
+---
+firstName: Cena
+lastName: Smith
+isAlive: true
+age: 27
+address:
+  streetAddress: 21 2nd Street
+  city: New Jersey
+  state: NY
+  postalCode: 10021-31005
+phoneNumbers:
+- type: home
+  number: ''
+  INVALID: '123456'
+- type: office
+  number: 646 555-4567
+- type: mobile
+  number: 123 456-7890
+children:
+- Others Key Blank
+- Others Key Blank
+spouse:
+
+Note * To read YAML data we are using JSON expression.
+
+path to YAML Element = $.firstName
+YAML_DATA = Cena
+
+
+For Object
+If Path exists:Yes
+[path to YAML Element] = $.address.state
+YAML_DATA::=NY
+
+For Array
+If Path exists:Yes
+[path to YAML Element] = $.phoneNumbers[2]
+UC4RB_JSN_DATA::={type=mobile, number=123 456-7890}
+]]></DOC>
 </DOCU_Docu>
 </DOCU>
 </uc-export>
