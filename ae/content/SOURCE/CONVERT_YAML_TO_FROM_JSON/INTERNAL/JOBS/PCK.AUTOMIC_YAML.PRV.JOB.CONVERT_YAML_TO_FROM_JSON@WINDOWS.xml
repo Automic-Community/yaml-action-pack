@@ -112,10 +112,73 @@
 <FInclSubDirs>0</FInclSubDirs>
 </ROLLBACK>
 <PRE_SCRIPT mode="1" replacementmode="1" state="1">
-<PSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.PREPARE_JOB]]></PSCRI>
+<PSCRI><![CDATA[:INC PCK.ITPA_SHARED.PUB.INCLUDE.START_STOP_JOB_ACCORDING_TO_AGENT_OS]]></PSCRI>
 </PRE_SCRIPT>
 <SCRIPT mode="1" state="1">
-<MSCRI/>
+<MSCRI><![CDATA[@echo off
+
+! Validating Input
+:SET &COUNT# = 0
+:IF &UC4RB_YAML_ORIGINAL_FILE_PATH# EQ ""
+:   SET &COUNT# = &COUNT# + 1
+:ENDIF
+:IF &UC4RB_YAML_ORIGINAL_CONTENT# EQ ""
+:  SET &COUNT# = &COUNT# + 1
+:ENDIF
+:IF &COUNT# NE 1
+:       STOP MSG, 50, "Please provide either original file path or content."
+:ENDIF
+
+
+!------------------------------------------ Building java arguments --------------------------------------------------------------------------------------------
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
+: INC PCK.AUTOMIC_YAML.PUB.INCLUDE.ATTACH_RESOURCE
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.CHANGE_DIRECTORY_TO_AGENT_BIN
+
+! Define action specific java options and values
+: SET &ACTION_NAME# = "ConvertYAMLToFromJSONAction"
+
+! Build java arguments
+: SET &UC4RB_YAML_CMD# = 'java -jar "&UC4RB_YAML_PATH_JAR#"'
+: SET &UC4RB_YAML_CMD# = STR_CAT(&UC4RB_YAML_CMD#, " -action &ACTION_NAME#")
+
+! yaml/json content
+: IF &UC4RB_YAML_ORIGINAL_FILE_PATH# NE ""
+:    SET &UC4RB_ESCAPED_STRING# = &UC4RB_YAML_ORIGINAL_FILE_PATH#
+: ELSE
+:    SET &UC4RB_YAML_CONTENT# = &UC4RB_YAML_ORIGINAL_CONTENT#
+:    INC PCK.AUTOMIC_YAML.PUB.INCLUDE.WRITE_YAML_TO_FILE
+:    SET &UC4RB_ESCAPED_STRING# = &UC4RB_TEMP_FILE_PATH#
+:    PUBLISH &UC4RB_TEMP_FILE_PATH#,,"TASK"
+: ENDIF
+
+: INC PCK.AUTOMIC_YAML.PUB.INCLUDE.ESCAPE_ARG_VALUE@WIN
+: SET &UC4RB_YAML_CMD# = STR_CAT(&UC4RB_YAML_CMD#, " -originalfilepath &UC4RB_ESCAPED_STRING#")
+
+
+! Convert to YAML or JSON
+: SET &UC4RB_YAML_CMD# = STR_CAT(&UC4RB_YAML_CMD#, " -converttype &UC4RB_YAML_JSON_CONVERT#")
+
+! Modified download file path
+: IF &UC4RB_YAML_DOWNLOAD_PATH# NE ""
+:   SET &UC4RB_ESCAPED_STRING# = &UC4RB_YAML_DOWNLOAD_PATH#
+:   INC PCK.AUTOMIC_YAML.PUB.INCLUDE.ESCAPE_ARG_VALUE@WIN
+:   SET  &UC4RB_YAML_CMD#  = STR_CAT( &UC4RB_YAML_CMD# , " -downloadpath &UC4RB_ESCAPED_STRING#")
+: ENDIF
+
+
+: PRINT &UC4RB_YAML_CMD#
+
+&UC4RB_YAML_CMD#
+
+! Status messages
+: SET &UC4RB_LOGGING_INFO# = "******** CONVERT YAML TO/FROM JSON ACTION EXECUTED SUCCESSFULLY ********"
+: SET &UC4RB_LOGGING_ERROR# = "******** CONVERT YAML TO/FROM JSON ACTION FAILED ********"
+
+!------------------------------------------ ERROR HANDLING ----------------------------------------------------
+: INC PCK.AUTOMIC_YAML.PUB.INCLUDE.CHECK_JOBSTATUS@WIN
+
+]]></MSCRI>
 </SCRIPT>
 <OUTPUTSCAN state="1">
 <Inherit>N</Inherit>
@@ -124,7 +187,7 @@
 <LoginFsc/>
 </OUTPUTSCAN>
 <POST_SCRIPT mode="1" replacementmode="1" state="1">
-<OSCRI/>
+<OSCRI><![CDATA[: INC PCK.AUTOMIC_YAML.PRV.INCLUDE.PUBLISH_COVERSION_DATA]]></OSCRI>
 </POST_SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC/>
