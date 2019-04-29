@@ -27,10 +27,9 @@ public class GetYAMLAction extends AbstractYAMLAction {
 			String output = yamlOperations.read(content,
 					yamlElementPath, failIfPathNotExist);
 			boolean valueExists = true;
-			if(output==null) {
+			if(output.isEmpty()) {
 				valueExists = false;
 			}
-			ConsoleWriter.writeln(Constants.GET_RUN_SUCESSFULL_MSG);
 			ConsoleWriter.writeln(
 					Constants.DEFAULT_VARIABLE + "::=" + output);
 			ConsoleWriter.writeln(Constants.VALUE_EXISTS + "::=" + valueExists);
