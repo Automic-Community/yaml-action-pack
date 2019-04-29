@@ -143,7 +143,7 @@ public class YamlOperations implements Serializable {
 				throw new AutomicException(
 					"Invalid YAML path, YAML does not contain anything on the path " + path + ", " + e.getMessage());
 			else{
-				ConsoleWriter.writeln("JSON Path does not exist.");
+				ConsoleWriter.writeln("YAML Path does not exist.");
 				return null;
 			}
 		} catch (IOException e) {
