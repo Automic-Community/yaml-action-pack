@@ -174,7 +174,7 @@
 <params>
 <param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_TEMP_FILE_PATH#"/>
 <param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="0" name="XC_P03" type="V" value="' '"/>
+<param altview="0" name="XC_P03" type="V" value=""/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="1" type="A" uiinfo="">
@@ -273,7 +273,7 @@
 <params>
 <param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_TEMP_FILE_PATH#"/>
 <param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="0" name="XC_P03" type="V" value="' '"/>
+<param altview="0" name="XC_P03" type="V" value=""/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="1" type="A" uiinfo="">
