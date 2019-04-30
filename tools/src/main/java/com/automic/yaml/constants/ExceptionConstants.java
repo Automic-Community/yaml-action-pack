@@ -22,6 +22,7 @@ public class ExceptionConstants {
 	public static final String INVALID_FORMAT_FOR_CONVERSION = "Invalid Format for Conversion, either provide JSON or YAML";
 
 	public static final String YAML_PATH_EMPTY_MSG = "Path to YAML element is empty.";
+	public static final String UPDATE_YAML_PATH_EMPTY_MSG = "Path to YAML emlement is empty.";
 	public static final String YAML_TARGET_POSITION_EMPTY_MSG = "Target location to add new element is empty.";
 	public static final String YAML_KEY_EMPTY_MSG = "Provided Key is empty.";
 	public static final String YAML_VALUE_EMPTY_MSG = "Provided Value is empty.";
