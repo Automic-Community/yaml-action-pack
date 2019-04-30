@@ -21,7 +21,7 @@ public class Constants {
 	public static final String IS_ARRAY = "isarray";
 	public static final String VALUE = "value";
 	public static final String YAML_DOWNLOAD_PATH = "downloadpath";
-	public static final String FAIL_IF_PATH_NOT_EXIST = "fail";
+	public static final String FAIL_IF_PATH_DOES_NOT_EXIST = "fail";
 	public static final String YAML_TARGET_POSITION = "position";
 	public static final String KEY = "key";
 	public static final String DEFAULT_VARIABLE = "UC4RB_YAML_DATA";

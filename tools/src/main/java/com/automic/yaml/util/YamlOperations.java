@@ -7,7 +7,6 @@ import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.automic.yaml.constants.Constants;
 import com.automic.yaml.constants.ExceptionConstants;
 import com.automic.yaml.exception.AutomicException;
 import com.automic.yaml.util.YamlUtils.FormatType;
@@ -71,20 +70,8 @@ public class YamlOperations implements Serializable {
 		return resultedJSONString;
 	}
 
-	public String read(String content, String path, boolean failOnException) throws AutomicException {
-
-		try {
+	public String read(String content, String path, boolean failOnException) throws AutomicException,PathNotFoundException {
 			return YamlUtils.getValueFromYaml(content, path);
-		} catch (AutomicException e) {
-
-			if (failOnException) {
-
-				throw new AutomicException(ExceptionConstants.INVALID_PATH_MSG, e);
-			}
-
-		}
-
-		return "";
 	}
 
 	public String write(String content, String path, String key, String value, String downloadFilePath,

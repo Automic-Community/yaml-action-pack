@@ -7,17 +7,18 @@ import com.automic.yaml.exception.AutomicException;
 import com.automic.yaml.util.CommonUtil;
 import com.automic.yaml.util.ConsoleWriter;
 import com.automic.yaml.util.YamlOperations;
+import com.jayway.jsonpath.PathNotFoundException;
 
 public class GetYAMLAction extends AbstractYAMLAction {
 
 	private String yamlElementPath;
-	private boolean failIfPathNotExist = true;
+	private boolean failIfPathDoesNotExist = true;
 
 	private YamlOperations yamlOperations = new YamlOperations();
 
 	public GetYAMLAction() {
 		addOption(Constants.YAML_ELEMENT_PATH, true, "Yaml Element Path");
-		addOption(Constants.FAIL_IF_PATH_NOT_EXIST, false, "Fail if Path Not Exist");
+		addOption(Constants.FAIL_IF_PATH_DOES_NOT_EXIST, false, "Fail if Path Does Not Exist");
 	}
 
 	@Override
@@ -25,18 +26,29 @@ public class GetYAMLAction extends AbstractYAMLAction {
 		prepareAndValidateInputs();
 		try {
 			String output = yamlOperations.read(content,
-					yamlElementPath, failIfPathNotExist);
+					yamlElementPath, failIfPathDoesNotExist);
 			boolean valueExists = true;
-			if(output.isEmpty()) {
+			if(output==null)
+			{
 				valueExists = false;
 			}
 			ConsoleWriter.writeln(
 					Constants.DEFAULT_VARIABLE + "::=\n" + output);
 			ConsoleWriter.writeln(Constants.VALUE_EXISTS + "::=" + valueExists);
 			ConsoleWriter.writeln("========================");
-		} catch (Exception exception) {
+		} catch(PathNotFoundException e) {
+			if (failIfPathDoesNotExist) {
+				ConsoleWriter.writeln(e);
+				throw new AutomicException("Invalid YAML path" + yamlElementPath + ", " + e.getMessage());
+			}
+			else
+			{
+				ConsoleWriter.writeln("Provided YAML Path does not exist");
+			}
+		} 
+		catch (Exception exception) {
 			ConsoleWriter.writeln(exception);
-			throw new AutomicException(exception.getMessage());
+			throw new AutomicException("Exception occurred while retrieving data from YAML" + ", "+ exception.getMessage());
 		}
 	}
 
@@ -45,7 +57,7 @@ public class GetYAMLAction extends AbstractYAMLAction {
 		if (!CommonUtil.checkNotEmpty(yamlElementPath)) {
 			throw new AutomicException(ExceptionConstants.YAML_PATH_EMPTY_MSG);
 		}
-		failIfPathNotExist = CommonUtil.convert2Bool(getOptionValue(Constants.FAIL_IF_PATH_NOT_EXIST));
+		failIfPathDoesNotExist = CommonUtil.convert2Bool(getOptionValue(Constants.FAIL_IF_PATH_DOES_NOT_EXIST));
 
 	}
 }
