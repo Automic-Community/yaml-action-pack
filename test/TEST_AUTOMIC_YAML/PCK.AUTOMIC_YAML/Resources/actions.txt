@@ -1,2 +1,3 @@
 *** Variables ***
 #---- AE Actions-------------------------
+${_REMOVE_YAML_CONTENT_ACTION}    PCK.AUTOMIC_YAML.PUB.ACTION.REMOVE_YAML_CONTENT
