@@ -5,11 +5,11 @@ Resource          ../../../Env/default.txt
 #---- Promptset Fields --------------------------------------------------------------------------------------
 #----Get YAML Data-------------------------------------------------------------------------------------
 ${YAMLFilePath}    D:\\Data\\YamlTestData\\new.yaml
-${YAMLContent}    firstName: John\nlastName: Smith\nisAlive: true\nage: 27
-${YAMLPath}      $.object.key
+${YAMLContent}    --- key: "value" firstName: "John" lastName: "Smith" isAlive: true nage: 27 array: - null_value:null - boolean: true
+${YAMLPath}       $.test
 ${YAMLPath1}      $.lastname
-${YAML_Array}     $.object.array
-${YAML_Object}    $.object
+${YAMLArray}      $.object.array
+${YAMLObject}     $.object
 #----Insert YAML Data-------------------------------------------------------------------------------------
 ${YAMLPath2}      $.lastname
 ${YAMLArrayPath}    ww
@@ -19,12 +19,12 @@ ${Download_path1}    D:\\Data\\YAMLTestdata\\InsertInContent.YAML
 ${Download_Path_Array}    D:\\Data\\YAMLTestdata\\InsertArray.YAML
 ${Download_Path_Object}    D:\\Data\\YAMLTestdata\\InsertObject.YAML
 ${InsertInYAMLContentPath}    $.firstname
-${ArrayKey}     ss
+${ArrayKey}       ss
 ${ArrayValue}     hh
-${ObjectKey}     ff
-${ObjectValue}     rr
+${ObjectKey}      ff
+${ObjectValue}    rr
 ${Key}            number
 ${Value}          123456
-${Key1}            number
-${Value1}          123456
+${Key1}           number
+${Value1}         123456
 #----Update YAML Data-------------------------------------------------------------------------------------
