@@ -89,7 +89,9 @@
 <dyntree>
 <node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
 <VALUE state="1">
-<Values/>
+<Values>
+<row ERTUsage="0" Name="&amp;UC4RB_TEMP_FILE_PATH#" Value=""/>
+</Values>
 <Mode>0</Mode>
 </VALUE>
 </node>

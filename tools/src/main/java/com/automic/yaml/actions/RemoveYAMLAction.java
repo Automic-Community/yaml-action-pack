@@ -3,8 +3,6 @@ package com.automic.yaml.actions;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.automic.yaml.base.AbstractYAMLAction;
 import com.automic.yaml.constants.Constants;
 import com.automic.yaml.constants.ExceptionConstants;
