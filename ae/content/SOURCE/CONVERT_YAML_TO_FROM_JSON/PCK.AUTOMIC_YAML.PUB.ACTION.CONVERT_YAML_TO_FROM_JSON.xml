@@ -160,7 +160,7 @@
 <params>
 <param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_TEMP_FILE_PATH#"/>
 <param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="0" name="XC_P03" type="V" value="' '"/>
+<param altview="0" name="XC_P03" type="V" value=""/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="1" type="A" uiinfo="">
@@ -252,7 +252,7 @@
 <params>
 <param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_TEMP_FILE_PATH#"/>
 <param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="0" name="XC_P03" type="V" value="' '"/>
+<param altview="0" name="XC_P03" type="V" value=""/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="1" type="A" uiinfo="">
@@ -422,7 +422,84 @@
 <MSCRI/>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC/>
+<DOC><![CDATA[= Action name =
+PCK.AUTOMIC_YAML.PUB.ACTION.CONVERT_YAML_TO_FROM_JSON
+
+= General description =
+This action willConvert YAML to JSON and vice versa.
+
+= Failure Conditions =
+* If the user provides invalid Original file path location, Original Content or download Path.
+
+= Inputs =
+- Original File Path: Provide the full path to the original file.
+- Original Content:   Provide YAML/JSON content or an AE variable that contains YAML/JSON content.
+- Convert to: Specify direction of the conversion. Either JSON or YAML.
+- Download Path: Specify a path to save the converted file.
+
+= Note =
+- Original File path and Original content are mutual exclusive.
+
+= Behavior =
+- Provide "Original File Path" and "Download Path" of the agent machine.
+- If the value entered in Download Path is not an absolute path, the modified file is downloaded to the agent directory.
+- The downloaded file will get overwritten if it already exists.
+
+=Return Value=
+UC4RB_YAML_OR_JSON_CONTENT: A variable that contains converted content.
+
+= Outputs =
+* Return code is 0 in case of success.
+* Return code is non-zero in case of failure.
+
+= Rollback =
+(none)
+
+= Logging =
+AE logs will be displayed in the AE report.
+
+= Example =
+- Original File Path: D:\YAML\input.yml or D:\JSON\input.json
+- Original Content:
+
+---
+-  martin:
+    name: Martin D'vloper
+    job: Developer
+    skills:
+      - python
+      - perl
+      - pascal
+-  tabitha:
+    name: Tabitha Bitumen
+    job: Developer
+    skills:
+      - lisp
+      - fortran
+      - erlang
+OR
+
+ {
+   "martin": {
+			
+   "name": "Martin D'vloper",
+   "job": "Developer",
+			
+   "skills": ["python", "perl", "pascal"]
+		
+    },
+   "tabitha": {
+			
+   "name": "Tabitha Bitumen",
+   "job": "Developer",
+   "skills": ["lisp","fortran","erlang"]
+    }
+}
+
+
+- Convert to: JSON/YAML
+- Download Path: D:\YAML\outputyaml.yml OR D:\YAML\outputjson.json
+]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

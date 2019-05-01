@@ -32,11 +32,6 @@ import net.minidev.json.JSONArray;
 
 public class YamlUtils {
 
-	public static enum FormatType {
-
-		JSON, YAML
-	}
-
 	private YamlUtils() {
 
 	}
@@ -344,7 +339,7 @@ public class YamlUtils {
 	}
 
 	public static String deleteFromYaml(String yamlString, String path) throws AutomicException, IOException {
-
+		getDocumentContextForYaml(yamlString).read(path); 
 		return writeJSONStringToYaml(getDocumentContextForYaml(yamlString).delete(path).jsonString());
 	}
 
