@@ -39,7 +39,7 @@ public class GetYAMLAction extends AbstractYAMLAction {
 		} catch(PathNotFoundException e) {
 			if (failIfPathDoesNotExist) {
 				ConsoleWriter.writeln(e);
-				throw new AutomicException("Invalid YAML path" + yamlElementPath + ", " + e.getMessage());
+				throw new AutomicException("Invalid YAML path " + yamlElementPath + ", " + e.getMessage());
 			}
 			else
 			{
@@ -48,7 +48,7 @@ public class GetYAMLAction extends AbstractYAMLAction {
 		} 
 		catch (Exception exception) {
 			ConsoleWriter.writeln(exception);
-			throw new AutomicException("Exception occurred while retrieving data from YAML" + ", "+ exception.getMessage());
+			throw new AutomicException("Exception occurred while retrieving data from YAML");
 		}
 	}
 
