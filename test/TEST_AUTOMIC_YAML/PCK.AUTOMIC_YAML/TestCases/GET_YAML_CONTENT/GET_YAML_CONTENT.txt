@@ -11,40 +11,37 @@ Resource          ../../Resources/keywords.txt
 Resource          ../../Resources/variables.txt
 Resource          ../../Resources/actions.txt
 
-*** Test Cases ***    OK_NOK    YML_File_Path      YML_Content       YML_Path         Fail_If_Path_Not_Exist
+*** Test Cases ***    OK_NOK    YAMLFilePath         YAMLContent        YAMLPath          Fail_If_Path_Not_Exist
 Get_YAML_Content from YAMLFile
                       [Tags]    main_scenarios
-                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLPath}      YES
+                      OK        ${YAML_File_Path}    ${EMPTY}           ${YAML_Path}      YES
 
 Get_YAML_Array from YAMLFile
-                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLArray}     YES
+                      OK        ${YAML_File_Path}    ${EMPTY}           ${YAML_Array}     YES
 
 Get_YAML_Object from YAMLFile
-                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLObject}    YES
+                      OK        ${YAML_File_Path}    ${EMPTY}           ${YAML_Object}    YES
 
 Get_YAML_Content from YAMLContent
-                      OK        ${EMPTY}           ${YAMLContent}    ${YAMLPath1}     YES
+                      OK        ${EMPTY}             ${YAML_Content}    ${YAML_Path1}     YES
 
-Get_YAML_Content from both YAMLFilePath and YAMLContent
-                      NOK       ${YAMLFilePath}    ${YAMLContent}    ${YAMLPath2}     YES
+Get_YAML_Content from both YAML_File_Path and YAMLContent
+                      NOK       ${YAML_File_Path}    ${YAML_Content}    ${YAML_Path1}     YES
 
-Get_YAML_Content from invalid YAMLFilePath
-                      NOK       Invalid            ${EMPTY}          ${YAMLPath}      YES
+Get_YAML_Content from invalid YAML_File_Path
+                      NOK       Invalid              ${EMPTY}           ${YAML_Path}      YES
 
 Get_YAML_Content from non-existing YAMLPath and FailPath as NO
-                      OK        ${YAMLFilePath}    ${EMPTY}          ${YAMLPath1}     NO
+                      OK        ${YAML_File_Path}    ${EMPTY}           ${YAML_Path1}     NO
 
 Get_YAML_Content having invalid Path
-                      NOK       ${YAMLFilePath}    ${EMPTY}          Invalid          YES
+                      NOK       ${YAML_File_Path}    ${EMPTY}           Invalid           YES
 
-Get_YAML_Content from invalid YAMLContent
-                      NOK       ${EMPTY}           Invalid           ${YAMLPath}      YES
-
-Get_YAML_Content when both YAMLFilePath and YAMLContent are empty
-                      NOK       ${EMPTY}           ${EMPTY}          ${YAMLPath}      YES
+Get_YAML_Content when both YAML_File_Path and YAMLContent are empty
+                      NOK       ${EMPTY}             ${EMPTY}           ${YAML_Path}      YES
 
 Get_YAML_Content having Empty Path
-                      NOK       ${YAMLFilePath}    ${EMPTY}          ${EMPTY}         YES
+                      NOK       ${YAML_File_Path}    ${EMPTY}           ${EMPTY}          YES
 
 *** Keywords ***
 Startup
@@ -53,21 +50,21 @@ Startup
     Connect AE
 
 GET_YAML_CONTENT Template
-    [Arguments]    ${OK_NOK}    ${YML_File_Path}    ${YML_Content}    ${YML_Path}    ${Fail_If_Path_Not_Exist}
+    [Arguments]    ${OK_NOK}    ${YAMLFilePath}    ${YAMLContent}    ${YAMLPath}    ${Fail_If_Path_Not_Exist}
     [Documentation]    This test tests the feature of Get YAMLContent.
     ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this variable should be OK or NOK.
-    ...    -${YML_File_Path}: This field specifies the full path to YAML file. E.g.: C:/Files/response.YAML.
-    ...    -${YML_Content}: This field specifies YAML content or a variable that contains YAML content.
-    ...    -${YML_Path}: This field specifies valid path to the YAML element to retrieve its value. E.g.: $.Dev.Server
+    ...    -${YAMLFilePath}: This field specifies the full path to YAML file. E.g.: C:/Files/response.YAML.
+    ...    -${YAMLContent}: This field specifies YAML content or a variable that contains YAML content.
+    ...    -${YAMLPath}: This field specifies valid path to the YAML element to retrieve its value. E.g.: $.Dev.Server
     ...    -${Fail_If_Path_Not_Exist}: This field specifies whether the action should fail if the path does not exist.
     Generate String
     Init Action    ${GET_YAML_CONTENT_ACTION}
-    Run Keyword If    '${YML_File_Path}' == 'Invalid'    Action Set    &UC4RB_YAML_FILE_PATH#    ${Generated_Name}_${Time}
-    ...    ELSE    Action Set    &UC4RB_YAML_FILE_PATH#    ${YML_File_Path}
-    Run Keyword If    '${YML_Content}' == 'Invalid'    Action Set    &UC4RB_YAML_CONTENT#    ${Generated_Name}_${Time}
-    ...    ELSE    Action Set    &UC4RB_YAML_CONTENT#    ${YML_Content}
-    Run Keyword If    '${YML_Path}' == 'Invalid'    Action Set    &UC4RB_YAML_ELEMENT_PATH#    ${Generated_Name}_${Time}
-    ...    ELSE    Action Set    &UC4RB_YAML_ELEMENT_PATH#    ${YML_Path}
+    Run Keyword If    '${YAMLFilePath}' == 'Invalid'    Action Set    &UC4RB_YAML_FILE_PATH#    ${Generated_Name}_${Time}
+    ...    ELSE    Action Set    &UC4RB_YAML_FILE_PATH#    ${YAMLFilePath}
+    Run Keyword If    '${YAMLContent}' == 'Invalid'    Action Set    &UC4RB_YAML_CONTENT#    ${Generated_Name}_${Time}
+    ...    ELSE    Action Set    &UC4RB_YAML_CONTENT#    ${YAMLContent}
+    Run Keyword If    '${YAMLPath}' == 'Invalid'    Action Set    &UC4RB_YAML_ELEMENT_PATH#    ${Generated_Name}_${Time}
+    ...    ELSE    Action Set    &UC4RB_YAML_ELEMENT_PATH#    ${YAMLPath}
     Run Keyword If    '${Fail_If_Path_Not_Exist}'    Action Set    &UC4RB_YAML_FAIL#    ${Fail_If_Path_Not_Exist}
     Action Execute
     Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success

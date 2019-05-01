@@ -3,13 +3,13 @@ Resource          ../../../Env/default.txt
 
 *** Variables ***
 #---- Promptset Fields --------------------------------------------------------------------------------------
-#----Get YAML Data-------------------------------------------------------------------------------------
-${YAMLFilePath}    D:\\Data\\YamlTestData\\new.yaml
-${YAMLContent}    --- key: "value" firstName: "John" lastName: "Smith" isAlive: true nage: 27 array: - null_value:null - boolean: true
-${YAMLPath}       $.test
-${YAMLPath1}      $.lastname
-${YAMLArray}      $.object.array
-${YAMLObject}     $.object
+#----Get YAML Data/Object/Array-------------------------------------------------------------------------------------
+${YAML_File_Path}    D:\\Data\\YamlTestData\\new.yaml
+${YAML_Content}    testkey: testvalue
+${YAML_Path}      $.paragraph
+${YAML_Path1}     $.testkey
+${YAML_Array}     $.json
+${YAML_Object}    $.object
 #----Insert YAML Data-------------------------------------------------------------------------------------
 ${YAMLPath2}      $.lastname
 ${YAMLArrayPath}    ww
