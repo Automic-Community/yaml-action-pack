@@ -7,7 +7,30 @@
 <OH_SubType/>
 </HEADER>
 <SCRIPT mode="1" state="1">
-<MSCRI/>
+<MSCRI><![CDATA[: SET &STATUS# = GET_UC_OBJECT_STATUS(,,"RETCODE")
+: SET &UC4RB_YAML_DATA# = ""
+: SET &FLAG# = 0
+: SET &SEARCH_START_STR# = "UC4RB_YAML_DATA::="
+: SET &SEARCH_END_STR# = "========================"
+: IF &STATUS# EQ 0
+:    SET &HND# = PREP_PROCESS_REPORT("JOBS",, "REP")
+:    PROCESS &HND#
+:         SET &VALUE# = GET_PROCESS_LINE(&HND#)
+:         IF &FLAG# EQ 0
+:           SET &FLAG# = STR_FIND(&VALUE#, &SEARCH_START_STR#)
+:           ELSE
+:             SET &READ_END_FLAG# = STR_FIND(&VALUE#, &SEARCH_END_STR#)
+:             IF &READ_END_FLAG# NE 0
+:                TERM_PROCESS
+:             ENDIF
+:             SET &NL# = UC_CRLF()
+:             SET  &UC4RB_YAML_DATA# = STR_CAT(&UC4RB_YAML_DATA#,"&VALUE#&NL#")
+:          ENDIF
+:   ENDPROCESS
+:   CLOSE_PROCESS &HND#
+: ENDIF
+: SET &UC4RB_YAML_DATA# = STR_TRIM(&UC4RB_YAML_DATA#)
+: PUBLISH &UC4RB_YAML_DATA#,,"WORKFLOW"]]></MSCRI>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC/>
