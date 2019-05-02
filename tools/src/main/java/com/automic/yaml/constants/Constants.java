@@ -19,6 +19,7 @@ public class Constants {
 
 	public static final String YAML_ELEMENT_PATH = "elementpath";
 	public static final String IS_ARRAY = "isarray";
+	public static final String IS_FAIL = "fail";
 	public static final String VALUE = "value";
 	public static final String YAML_DOWNLOAD_PATH = "downloadpath";
 
