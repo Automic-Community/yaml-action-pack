@@ -3,7 +3,7 @@ package com.automic.yaml.constants;
 /**
  * Exception constants used in the application
  * 
- * @author shrutinambiar
+ * @author vijendraparmar
  *
  */
 public class ExceptionConstants {
@@ -23,6 +23,7 @@ public class ExceptionConstants {
 	public static final String INVALID_FORMAT_FOR_CONVERSION = "Invalid Format for Conversion, either provide JSON or YAML";
 	public static final String UPDATE_YAML_PATH_EMPTY_MSG = "Path to YAML emlement is empty.";
 	public static final String UNABLE_TO_CREATE_FILE = "Error in creating file at Download Path : [%s].";
+	public static final String VALUE_CANNOT_BE_EMPTY = "Value field cannot be empty.";
 	
 	private ExceptionConstants() {
 	}
