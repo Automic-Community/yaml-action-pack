@@ -338,9 +338,10 @@ public class YamlUtils {
 
 	}
 
-	public static String deleteFromYaml(String yamlString, String path) throws AutomicException, IOException {
-		getDocumentContextForYaml(yamlString).read(path); 
-		return writeJSONStringToYaml(getDocumentContextForYaml(yamlString).delete(path).jsonString());
+	public static String deleteFromYaml(String yamlString, String path) throws AutomicException {
+		
+			getDocumentContextForYaml(yamlString).read(path); 
+			return writeJSONStringToYaml(getDocumentContextForYaml(yamlString).delete(path).jsonString());
 	}
 
 	public static boolean isFileExist(String filePath) throws AutomicException {

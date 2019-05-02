@@ -7,7 +7,6 @@ import java.util.Objects;
 
 import com.automic.yaml.constants.ExceptionConstants;
 import com.automic.yaml.exception.AutomicException;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.jayway.jsonpath.PathNotFoundException;
 
 
@@ -58,27 +57,18 @@ public class YamlOperations implements Serializable {
 
 
 	public String remove(String content, String path, boolean failOnException) throws AutomicException {
-
-		    try {
-			
-		    	String updatedYamlString = YamlUtils.deleteFromYaml(content, path);
+		try {
+			    String updatedYamlString = YamlUtils.deleteFromYaml(content, path);
 		    	return updatedYamlString;
-		} catch (JsonParseException e) {
-
-			throw new AutomicException("Invalid YAML content");
-		} catch (PathNotFoundException e) {
-
-			if(failOnException)
-				throw new AutomicException(
+		    } catch (PathNotFoundException e) {
+		    	if(failOnException)
+		    		throw new AutomicException(
 					"Invalid YAML path, YAML does not contain anything on the path " + path + ", " + e.getMessage());
-			else{
-				ConsoleWriter.writeln("YAML Path does not exist.");
-				return null;
+		    	else{
+		    		ConsoleWriter.writeln("YAML Path does not exist.");
+		    		return null;
 			}
-		} catch (IOException e) {
-
-			throw new AutomicException(e.getMessage());
-		}
+		} 
 	}
 
 }
