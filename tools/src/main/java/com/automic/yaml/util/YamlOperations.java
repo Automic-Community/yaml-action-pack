@@ -7,15 +7,14 @@ import java.util.Objects;
 
 import com.automic.yaml.constants.ExceptionConstants;
 import com.automic.yaml.exception.AutomicException;
+import com.jayway.jsonpath.JsonPathException;
 import com.jayway.jsonpath.PathNotFoundException;
-
 
 public class YamlOperations implements Serializable {
 
 	private static final long serialVersionUID = -7938914235799895810L;
 
-	public String formatConvertion(String content, String format)
-			throws IOException, AutomicException {
+	public String formatConvertion(String content, String format) throws IOException, AutomicException {
 		String convertedString = null;
 
 		if (format.equals("JSON")) {
@@ -50,25 +49,41 @@ public class YamlOperations implements Serializable {
 			resultedJSONString = YamlUtils.writeYAMLStringToJSON(content);
 		}
 
-
 		return resultedJSONString;
 	}
 
+	public String read(String content, String path, boolean failOnException)
+			throws AutomicException, PathNotFoundException {
+		return YamlUtils.getValueFromYaml(content, path);
+	}
 
+	public String update(String content, String path, String value, boolean isArray) throws AutomicException {
+
+		try {
+			return YamlUtils.updateYaml(content, path, value, isArray);
+		} catch (JsonPathException exception) {
+
+			throw new AutomicException(ExceptionConstants.INVALID_PATH_MSG, exception);
+		} catch (IOException e) {
+			throw new AutomicException(ExceptionConstants.INVALID_YAML_FORMAT_MSG, e);
+
+		} catch (Exception e) {
+			throw new AutomicException(ExceptionConstants.UNABLE_UPDATE_CONTENT_MSG, e);
+		}
+	}
 
 	public String remove(String content, String path, boolean failOnException) throws AutomicException {
 		try {
-			    String updatedYamlString = YamlUtils.deleteFromYaml(content, path);
-		    	return updatedYamlString;
-		    } catch (PathNotFoundException e) {
-		    	if(failOnException)
-		    		throw new AutomicException(
-					"Invalid YAML path, YAML does not contain anything on the path " + path + ", " + e.getMessage());
-		    	else{
-		    		ConsoleWriter.writeln("YAML Path does not exist.");
-		    		return null;
+			return YamlUtils.deleteFromYaml(content, path);
+		} catch (PathNotFoundException e) {
+			if (failOnException)
+				throw new AutomicException("Invalid YAML path, YAML does not contain anything on the path " + path
+						+ ", " + e.getMessage());
+			else {
+				ConsoleWriter.writeln("YAML Path does not exist.");
+				return null;
 			}
-		} 
-	}
+		}
 
+	}
 }

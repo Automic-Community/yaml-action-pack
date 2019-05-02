@@ -27,7 +27,7 @@ public class ConvertYAMLToFromJSONAction extends AbstractAction {
 	private YamlOperations yamlOperations = new YamlOperations();
 
 	/**
-	 * Initializes a newly created {@code SendMessageAction}
+	 * Initializes a newly created {@code ConvertYAMLToFromJSONAction}
 	 */
 	public ConvertYAMLToFromJSONAction() {
 		addOption(Constants.ORIGINAL_FILE_PATH, true, "Original File Path");

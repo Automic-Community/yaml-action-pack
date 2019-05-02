@@ -30,7 +30,7 @@ public final class Client {
      *            array of parameters
      */
     public static void main(String[] params) {
-        int responseCode = RESPONSE_NOT_OK;
+    	int responseCode = RESPONSE_NOT_OK;
         try {
             ClientHelper.executeAction(params);
             responseCode = RESPONSE_OK;

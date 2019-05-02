@@ -3,7 +3,7 @@ Library           com.automic.robot.itpa.ItpaLibrary
 
 *** Variables ***
 #---- AE -------------------------
-@{AE}             AUTOMIC    localhost    2217    100/AUTOMIC/AUTOMIC    test    # system, host, port, user, pass
+@{AE}             AUTOMIC    localhost    2217    100/AUTOMIC/AUTOMIC    1234    # system, host, port, user, pass
 #---- Promptset Overwrite Agent -------------------------------------------------------------------------
 @{Promptset_Overwrite_Agent_WIN}    WIN01    LOGIN.WIN01
 @{Promptset_Overwrite_Agent_UNIX}    UBUNTU_AGENT    LOGIN.ALL

@@ -25,7 +25,6 @@ Following actions are supported.
 
 * Action name: PCK.AUTOMIC_YAML.PUB.ACTION.CONVERT_YAML_TO_FROM_JSON
 * Action Description: This action will convert YAML to JSON and vice versa.
-
 e.g.
 Sample YAML:
 ---
