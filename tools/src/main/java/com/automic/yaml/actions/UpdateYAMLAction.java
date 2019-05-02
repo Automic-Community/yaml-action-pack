@@ -20,7 +20,7 @@ import com.automic.yaml.util.YamlUtils;
 public class UpdateYAMLAction extends AbstractYAMLAction {
 
 	private String yamlElementPath;
-	private boolean isArray  = false;
+	private boolean isArray = false;
 	private String value;
 	private String yamlDownloadPath;
 
@@ -48,7 +48,7 @@ public class UpdateYAMLAction extends AbstractYAMLAction {
 				YamlUtils.writeContentToFile(yamlDownloadPath, output);
 			}
 
-			ConsoleWriter.writeln("UPDATED_YAML::==========\n"+output);
+			ConsoleWriter.writeln("UPDATED_YAML::==========\n" + output);
 			ConsoleWriter.writeln("========================");
 		} catch (Exception exception) {
 			ConsoleWriter.writeln(exception);
@@ -64,11 +64,18 @@ public class UpdateYAMLAction extends AbstractYAMLAction {
 		}
 
 		isArray = CommonUtil.convert2Bool(getOptionValue(Constants.IS_ARRAY));
-		
-		value = getOptionValue(Constants.VALUE);
-		if (!CommonUtil.checkNotEmpty(value)) {
+
+		String temp = getOptionValue(Constants.VALUE);
+		if (!CommonUtil.checkNotEmpty(temp)) {
 			throw new AutomicException(ExceptionConstants.VALUE_CANNOT_BE_EMPTY);
 		}
+		File vFile = new File(temp);
+		CommonUtil.checkFileExists(vFile, "Value");
+		if (vFile.length() == 0) {
+			throw new AutomicException(ExceptionConstants.VALUE_CANNOT_BE_EMPTY);
+		}
+
+		value = CommonUtil.readFromFile(temp, "Value");
 
 		yamlDownloadPath = getOptionValue(Constants.YAML_DOWNLOAD_PATH);
 		if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {

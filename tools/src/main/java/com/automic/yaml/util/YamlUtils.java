@@ -322,6 +322,8 @@ public class YamlUtils {
 	public static String updateYaml(String yamlString, String path, Object value, boolean isArray)
 			throws IOException, AutomicException {
 
+		getDocumentContextForYaml(yamlString).read(path);
+		
 		if (isArray) {
 
 			return writeJSONStringToYaml(getDocumentContextForYaml(yamlString)
