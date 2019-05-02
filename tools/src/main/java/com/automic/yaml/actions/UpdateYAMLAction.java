@@ -3,8 +3,6 @@ package com.automic.yaml.actions;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.automic.yaml.base.AbstractYAMLAction;
 import com.automic.yaml.constants.Constants;
 import com.automic.yaml.constants.ExceptionConstants;
@@ -16,57 +14,70 @@ import com.automic.yaml.util.YamlUtils;
 
 /**
  * 
- * @author priyadarshnitripathi
+ * @author vijendraparmar
  *
  */
-public class RemoveYAMLAction extends AbstractYAMLAction {
-	
+public class UpdateYAMLAction extends AbstractYAMLAction {
+
 	private String yamlElementPath;
-	private boolean isFail=true;
+	private boolean isArray = false;
+	private String value;
 	private String yamlDownloadPath;
-	
 
 	private YamlOperations yamlOperations = new YamlOperations();
 
 	/**
 	 * Initializes a newly created {@code SendMessageAction}
 	 */
-	public RemoveYAMLAction() {
-		addOption(Constants.YAML_ELEMENT_PATH, true, "Path to Yaml Element");
-		addOption(Constants.IS_FAIL, false, "Fail if path does not exist");
-		addOption(Constants.YAML_DOWNLOAD_PATH, false, "Download Path");
+	public UpdateYAMLAction() {
+		addOption(Constants.YAML_ELEMENT_PATH, true, "Yaml Element Path");
+		addOption(Constants.IS_ARRAY, true, "Is Array");
+		addOption(Constants.VALUE, true, "Value");
+		addOption(Constants.YAML_DOWNLOAD_PATH, false, "Yaml Download Path");
 
 	}
-	
+
 	@Override
 	protected void executeSpecific() throws AutomicException {
-		String output=null;
 		prepareAndValidateInputs();
 		try {
 
-			output = yamlOperations.remove(content, yamlElementPath, isFail);
-			if(output==null)
-				output=content;
+			String output = yamlOperations.update(content, yamlElementPath, value, isArray);
+
 			if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {
 				YamlUtils.writeContentToFile(yamlDownloadPath, output);
 			}
-			
-			ConsoleWriter.writeln("UC4RB_CONTENT::=========="+"\n" + output);
+
+			ConsoleWriter.writeln("UPDATED_YAML::==========\n" + output);
 			ConsoleWriter.writeln("========================");
 		} catch (Exception exception) {
 			ConsoleWriter.writeln(exception);
-			throw new AutomicException("Exception occurred while removing data from YAML");
+			throw new AutomicException("YAML could not be updated successfully.");
 		}
 	}
 
 	private void prepareAndValidateInputs() throws AutomicException {
 		yamlElementPath = getOptionValue(Constants.YAML_ELEMENT_PATH);
+
 		if (!CommonUtil.checkNotEmpty(yamlElementPath)) {
 			throw new AutomicException(ExceptionConstants.UPDATE_YAML_PATH_EMPTY_MSG);
 		}
-		
-		isFail=CommonUtil.convert2Bool(getOptionValue(Constants.IS_FAIL));
-		yamlDownloadPath=getOptionValue(Constants.YAML_DOWNLOAD_PATH);
+
+		isArray = CommonUtil.convert2Bool(getOptionValue(Constants.IS_ARRAY));
+
+		String temp = getOptionValue(Constants.VALUE);
+		if (!CommonUtil.checkNotEmpty(temp)) {
+			throw new AutomicException(ExceptionConstants.VALUE_CANNOT_BE_EMPTY);
+		}
+		File vFile = new File(temp);
+		CommonUtil.checkFileExists(vFile, "Value");
+		if (vFile.length() == 0) {
+			throw new AutomicException(ExceptionConstants.VALUE_CANNOT_BE_EMPTY);
+		}
+
+		value = CommonUtil.readFromFile(temp, "Value");
+
+		yamlDownloadPath = getOptionValue(Constants.YAML_DOWNLOAD_PATH);
 		if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {
 			try {
 
@@ -78,6 +89,4 @@ public class RemoveYAMLAction extends AbstractYAMLAction {
 			}
 		}
 	}
-
-	
 }
