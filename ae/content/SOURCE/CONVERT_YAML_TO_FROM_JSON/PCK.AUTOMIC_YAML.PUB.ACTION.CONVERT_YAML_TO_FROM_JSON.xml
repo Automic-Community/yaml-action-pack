@@ -426,7 +426,7 @@
 PCK.AUTOMIC_YAML.PUB.ACTION.CONVERT_YAML_TO_FROM_JSON
 
 = General description =
-This action willConvert YAML to JSON and vice versa.
+This action will convert YAML to JSON and vice versa.
 
 = Failure Conditions =
 * If the user provides invalid Original file path location, Original Content or download Path.
@@ -438,7 +438,7 @@ This action willConvert YAML to JSON and vice versa.
 - Download Path: Specify a path to save the converted file.
 
 = Note =
-- Original File path and Original content are mutual exclusive.
+- Original File path and Original content are mutually exclusive.
 
 = Behavior =
 - Provide "Original File Path" and "Download Path" of the agent machine.

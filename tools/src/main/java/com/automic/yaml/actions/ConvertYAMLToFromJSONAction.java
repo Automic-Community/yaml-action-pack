@@ -18,12 +18,12 @@ import com.automic.yaml.util.YamlUtils;
  *
  */
 public class ConvertYAMLToFromJSONAction extends AbstractAction {
-	
+
 	private String originalFilePath;
-	private String convertToFormat="JSON";
+	private String convertToFormat = "JSON";
 	private String yamlDownloadPath;
 	private String content;
-	
+
 	private YamlOperations yamlOperations = new YamlOperations();
 
 	/**
@@ -35,36 +35,35 @@ public class ConvertYAMLToFromJSONAction extends AbstractAction {
 		addOption(Constants.YAML_DOWNLOAD_PATH, false, "Download Path");
 
 	}
-	
+
 	@Override
 	protected void execute() throws AutomicException {
-		// TODO Auto-generated method stub
 		prepareAndValidateInputs();
 		executeSpecific();
-		
+
 	}
-	
+
 	protected void executeSpecific() throws AutomicException {
-		try{
-			String convertedContent=null;
+		try {
+			String convertedContent = null;
 			convertedContent = yamlOperations.formatConvertion(content, convertToFormat);
 			if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {
 				YamlUtils.writeContentToFile(yamlDownloadPath, convertedContent);
 			}
-			
-			ConsoleWriter.writeln("UC4RB_CONTENT::=========="+"\n" + convertedContent);
+
+			ConsoleWriter.writeln("UC4RB_CONTENT::==========" + "\n" + convertedContent);
 			ConsoleWriter.writeln("========================");
-		}catch(Exception e){
+		} catch (Exception e) {
 			ConsoleWriter.writeln(e);
-			throw new AutomicException("Unable to convert in "+convertToFormat+" format");
+			throw new AutomicException("Unable to convert in " + convertToFormat + " format");
 		}
 	}
 
 	private void prepareAndValidateInputs() throws AutomicException {
 		originalFilePath = getOptionValue(Constants.ORIGINAL_FILE_PATH);
-		convertToFormat=getOptionValue(Constants.CONVERT_TYPE);
-		yamlDownloadPath=getOptionValue(Constants.YAML_DOWNLOAD_PATH);
-		
+		convertToFormat = getOptionValue(Constants.CONVERT_TYPE);
+		yamlDownloadPath = getOptionValue(Constants.YAML_DOWNLOAD_PATH);
+
 		if (!CommonUtil.checkNotEmpty(originalFilePath)) {
 			throw new AutomicException(
 					String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, "Original File Path", originalFilePath));
@@ -75,15 +74,16 @@ public class ConvertYAMLToFromJSONAction extends AbstractAction {
 			throw new AutomicException("Provided Original file/content is empty");
 		}
 		try {
-			if(convertToFormat.equals("JSON"))
-				content = YamlUtils.readYAMLFromFile(originalFilePath);
+			if ("YAML".equalsIgnoreCase(convertToFormat))
+				content = YamlUtils.readJSONFromFile(originalFilePath);
 			else
-				content=YamlUtils.readJSONFromFile(originalFilePath);
+				content = YamlUtils.readYAMLFromFile(originalFilePath);
 		} catch (IOException e) {
 			ConsoleWriter.writeln(e);
-			throw new AutomicException("Invalid YAML/JSON Content, make sure you are providing valid YAML/JSON data/file");
+			throw new AutomicException(
+					"Invalid YAML/JSON Content, make sure you are providing valid YAML/JSON data/file");
 		}
-		
+
 		if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {
 			try {
 
@@ -96,6 +96,5 @@ public class ConvertYAMLToFromJSONAction extends AbstractAction {
 		}
 
 	}
-	
 
 }

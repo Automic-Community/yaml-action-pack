@@ -169,27 +169,23 @@ public class YamlUtils {
 
 	}
 
-
 	public static String readJSONFromFile(String filePath) throws IOException, AutomicException {
 
 		ObjectMapper mapper = getJSONObjectMapper();
 		String jsonString;
-		try {
-		      final JsonParser parser = new ObjectMapper().getFactory()
-		            .createParser(new File(filePath));
-		      while (parser.nextToken() != null) {
-		      }
-		      jsonString = mapper.writeValueAsString(mapper.readValue(new File(filePath), Object.class));
-			  return jsonString;
-		   } catch (JsonParseException e) {
-			  ConsoleWriter.writeln(e);
-		      throw new AutomicException("Exception while parsing JSON File "+filePath);
-		   } catch (IOException e) {
-			    ConsoleWriter.writeln(e);
-				throw new AutomicException("Exception while parsing JSON File "+filePath);
-		   }
+		try (final JsonParser parser = new ObjectMapper().getFactory().createParser(new File(filePath))) {
+			while (parser.nextToken() != null) {
+			}
+			jsonString = mapper.writeValueAsString(mapper.readValue(new File(filePath), Object.class));
+			return jsonString;
+		} catch (JsonParseException e) {
+			ConsoleWriter.writeln(e);
+			throw new AutomicException("Exception while parsing JSON File " + filePath);
+		} catch (IOException e) {
+			ConsoleWriter.writeln(e);
+			throw new AutomicException("Exception while parsing JSON File " + filePath);
+		}
 	}
-
 
 	public static String convertObjectToYaml(Object object) throws JsonProcessingException {
 
