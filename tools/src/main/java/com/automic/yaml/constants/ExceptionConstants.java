@@ -3,6 +3,7 @@ package com.automic.yaml.constants;
 /**
  * Exception constants used in the application
  * 
+ * @author vijendraparmar
  *
  */
 public class ExceptionConstants {
@@ -29,6 +30,7 @@ public class ExceptionConstants {
 	
 	
 	public static final String UNABLE_TO_CREATE_FILE = "Error in creating file at Download Path : [%s].";
+	public static final String VALUE_CANNOT_BE_EMPTY = "Value field cannot be empty.";
 	
 	
 	private ExceptionConstants() {

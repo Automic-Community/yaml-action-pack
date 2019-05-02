@@ -26,8 +26,11 @@
 <VARA state="1">
 <Variables>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <row Name="PCK.AUTOMIC_YAML.PUB.ACTION.GET_YAML_CONTENT/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="PCK.AUTOMIC_YAML.PUB.ACTION.GET_YAML_CONTENT/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_YAML.PUB.ACTION.UPDATE_YAML_CONTENT/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_YAML.PUB.ACTION.UPDATE_YAML_CONTENT/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="PCK.AUTOMIC_YAML.PUB.ACTION.REMOVE_YAML_CONTENT/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="PCK.AUTOMIC_YAML.PUB.ACTION.REMOVE_YAML_CONTENT/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
 </Variables>

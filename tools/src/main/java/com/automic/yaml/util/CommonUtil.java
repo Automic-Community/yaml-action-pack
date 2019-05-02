@@ -3,6 +3,10 @@ package com.automic.yaml.util;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 import com.automic.yaml.constants.Constants;
 import com.automic.yaml.constants.ExceptionConstants;
@@ -119,12 +123,9 @@ public class CommonUtil {
 	/**
 	 * This method check for provide {@code File} file existence
 	 * 
-	 * @param file
-	 *            {@code File} object
-	 * @param parameterName
-	 *            {@code String} object
-	 * @throws AutomicException
-	 *             Invalid value for parameter
+	 * @param file          {@code File} object
+	 * @param parameterName {@code String} object
+	 * @throws AutomicException Invalid value for parameter
 	 */
 	public static void checkFileExists(File file, String parameterName) throws AutomicException {
 		if (!(file.exists() && file.isFile())) {
@@ -135,12 +136,9 @@ public class CommonUtil {
 	/**
 	 * This method writes content to the provided {@code File}
 	 * 
-	 * @param file
-	 *            {@code File} object
-	 * @param parameterName
-	 *            {@code String} object
-	 * @throws AutomicException
-	 *             Invalid value for parameter
+	 * @param file          {@code File} object
+	 * @param parameterName {@code String} object
+	 * @throws AutomicException Invalid value for parameter
 	 */
 	public static void writeToFile(File filePath, String content, String parameter) throws AutomicException {
 		FileWriter fWriter = null;
@@ -149,7 +147,7 @@ public class CommonUtil {
 			fWriter.write(content);
 		} catch (IOException e) {
 			ConsoleWriter.writeln(e);
-			throw new AutomicException(String.format(ExceptionConstants.INVALID_INPUT_PARAMETER,parameter, filePath));
+			throw new AutomicException(String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, parameter, filePath));
 		} finally {
 			try {
 				if (fWriter != null)
@@ -158,6 +156,27 @@ public class CommonUtil {
 				ConsoleWriter.write("Issue in closing the file writer: " + e);
 			}
 		}
+	}
+
+	/**
+	 * This method reads content from the provided {@code File}
+	 * 
+	 * @param filePath          
+	 * @param parameter 
+	 * @throws AutomicException Invalid value for parameter
+	 */
+	public static String readFromFile(String filePath, String parameter) throws AutomicException {
+		StringBuilder sBuilder = new StringBuilder();
+		try {
+			List<String> lines = Files.readAllLines(Paths.get(filePath), StandardCharsets.UTF_8);
+			for (String line : lines) {
+				sBuilder.append(line).append("\n");
+			}
+		} catch (IOException e) {
+			ConsoleWriter.writeln(e);
+			throw new AutomicException(String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, parameter, filePath));
+		}
+		return sBuilder.toString();
 	}
 
 }

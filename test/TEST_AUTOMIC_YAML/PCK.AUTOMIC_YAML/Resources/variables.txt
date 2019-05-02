@@ -3,13 +3,16 @@ Resource          ../../../Env/default.txt
 
 *** Variables ***
 #---- Promptset Fields --------------------------------------------------------------------------------------
-#--------Get/Update/Delete Data/Object/Array from YAML-------------------------------------------------
+#--------Get Data/Object/Array from YAML-------------------------------------------------
 ${YAML_File_Path}    C:\\Users\\ritesh1583\\Desktop\\YAML_Test .yaml
 ${YAML_Content}    Empty
 ${YAML_Path}      $.object
 ${YAML_Path1}     Address
 ${YAML_Array}     Address[0].item
 ${YAML_Object}    address.name
+#--------Update Data/Object/Array from YAML-------------------------------------------------
+${Value}          updated_value
+#--------Delete Data/Object/Array from YAML-------------------------------------------------
 ${YAML_Path_Not_Exist}    phone
 ${Download_path}    D:\\Data\\YAMLTestdata\\Dwnld.YAML
 ${Download_path1}    D:\\Data\\YAMLTestdata\\Dwnld1.YAML

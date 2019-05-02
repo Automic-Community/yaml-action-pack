@@ -74,8 +74,8 @@ public class YamlOperations implements Serializable {
 			return YamlUtils.getValueFromYaml(content, path);
 	}
 
-	public String write(String content, String path, String key, String value, String downloadFilePath,
-			boolean failOnException) throws AutomicException {
+	public String write(String content, String path, String key, String value, String downloadFilePath)
+			throws AutomicException {
 		String response = "";
 		try {
 			response = YamlUtils.addToYaml(content, path, key, value);
@@ -85,16 +85,13 @@ public class YamlOperations implements Serializable {
 			throw new AutomicException(ExceptionConstants.INVALID_PATH_MSG, e);
 		} catch (JsonProcessingException e) {
 			throw new AutomicException(ExceptionConstants.INVALID_YAML_FORMAT_MSG, e);
-		} catch (IOException e) {
-			throw new AutomicException(e.getMessage(), e);
 		} catch (Exception e) {
 			throw new AutomicException(e.getMessage(), e);
 		}
 		return response;
 	}
 
-	public String update(String content, String path, String value, boolean isArray, String downloadFilePath)
-			throws AutomicException {
+	public String update(String content, String path, String value, boolean isArray) throws AutomicException {
 
 		try {
 			return YamlUtils.updateYaml(content, path, value, isArray);
@@ -111,19 +108,19 @@ public class YamlOperations implements Serializable {
 
 	public String remove(String content, String path, boolean failOnException) throws AutomicException {
 
-		    try {
-			
-		    	String updatedYamlString = YamlUtils.deleteFromYaml(content, path);
-		    	return updatedYamlString;
+		try {
+
+			String updatedYamlString = YamlUtils.deleteFromYaml(content, path);
+			return updatedYamlString;
 		} catch (JsonParseException e) {
 
 			throw new AutomicException("Invalid YAML content");
 		} catch (PathNotFoundException e) {
 
-			if(failOnException)
-				throw new AutomicException(
-					"Invalid YAML path, YAML does not contain anything on the path " + path + ", " + e.getMessage());
-			else{
+			if (failOnException)
+				throw new AutomicException("Invalid YAML path, YAML does not contain anything on the path " + path
+						+ ", " + e.getMessage());
+			else {
 				ConsoleWriter.writeln("YAML Path does not exist.");
 				return null;
 			}
