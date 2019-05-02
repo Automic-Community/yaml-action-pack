@@ -71,7 +71,7 @@ public class YamlOperations implements Serializable {
 	}
 
 	public String read(String content, String path, boolean failOnException) throws AutomicException,PathNotFoundException {
-			return YamlUtils.getValueFromYaml(content, path);
+		return YamlUtils.getValueFromYaml(content, path);
 	}
 
 	public String write(String content, String path, String key, String value, String downloadFilePath)
@@ -112,11 +112,8 @@ public class YamlOperations implements Serializable {
 
 			String updatedYamlString = YamlUtils.deleteFromYaml(content, path);
 			return updatedYamlString;
-		} catch (JsonParseException e) {
 
-			throw new AutomicException("Invalid YAML content");
 		} catch (PathNotFoundException e) {
-
 			if (failOnException)
 				throw new AutomicException("Invalid YAML path, YAML does not contain anything on the path " + path
 						+ ", " + e.getMessage());
@@ -124,10 +121,6 @@ public class YamlOperations implements Serializable {
 				ConsoleWriter.writeln("YAML Path does not exist.");
 				return null;
 			}
-		} catch (IOException e) {
-
-			throw new AutomicException(e.getMessage());
 		}
 	}
-
 }
