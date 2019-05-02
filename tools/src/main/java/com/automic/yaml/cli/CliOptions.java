@@ -6,7 +6,7 @@ import org.apache.commons.cli.Options;
 import com.automic.yaml.constants.Constants;
 
 /**
- * This class is used to instantiate the Options for CA Harvest.This class only initializes the action and help
+ * This class is used to instantiate the Options.This class only initializes the action and help
  * options.Further action specific options should be added to the same object (i.e CliOptions object) instantiated by
  * this class
  */

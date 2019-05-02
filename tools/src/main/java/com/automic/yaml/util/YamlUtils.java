@@ -267,7 +267,7 @@ public class YamlUtils {
 	 * @return Return formated YAML {String}
 	 * @throws AutomicException
 	 */
-	public static String getValueFromYaml(String yamlString, String path) throws AutomicException {
+	public static String getValueFromYaml(String yamlString, String path) throws AutomicException,PathNotFoundException {
 
 		DocumentContext context = getDocumentContext(writeYAMLStringToJSON(yamlString));
 
@@ -283,10 +283,7 @@ public class YamlUtils {
 					: getYAMLObjectMapper().writeValueAsString(result);
 		} catch (JsonProcessingException e) {
 			throw new AutomicException("Unable to get value for provided path", e);
-		} catch (PathNotFoundException e) {
-
-			throw new AutomicException("Invalid YAML path " + path, e);
-		}
+		} 
 	}
 
 	/***
