@@ -11,27 +11,25 @@ Resource          ../../Resources/keywords.txt
 Resource          ../../Resources/variables.txt
 Resource          ../../Resources/actions.txt
 
-*** Test Cases ***    OK_NOK    YAMLFilePath         YAMLContent        Convert_To         DownloadPath
+*** Test Cases ***    OK_NOK    YAMLFilePath         YAMLContent              Convert_To    DownloadPath
 CONVERT_YAML_TO_JSON when YAMLFilePath is valid
                       [Tags]    main_scenarios
-                      OK        ${YAML_File_Path}    ${Empty}           JSON                ${Download_path}
+                      OK        ${YAML_File_Path}    ${Empty}                 JSON          ${Download_path}
 
 CONVERT_YAML_TO_JSON when convert to is YAML
-                      OK        ${YAML_File_Path}    ${Empty}           YAML                ${Download_path2}
+                      OK        ${JSON_File_Path}    ${Empty}                 YAML          ${Download_path2}
 
 CONVERT_YAML_TO_JSON with invalid YAMLFilePath
-                      NOK       Invalid              ${Empty}           JSON                ${Download_path3}
+                      NOK       Invalid              ${Empty}                 JSON          ${Download_path3}
 
 CONVERT_YAML_TO_JSON with invalid YAMLContent
-                      NOK       ${Empty}             Invalid            JSON                ${Empty}
+                      NOK       ${Empty}             ${InvalidYMALContent}    JSON          ${Empty}
 
 CONVERT_YAML_TO_JSON with empty YAMLFilePath and YAMLContent
-                      NOK       ${Empty}             ${Empty}           JSON                 ${Empty}
+                      NOK       ${Empty}             ${Empty}                 JSON          ${Empty}
 
 CONVERT_YAML_TO_JSON with value in both YAMLFilePath and YAMLContent
-                      NOK       ${YAML_File_Path}    ${YAML_Content}    ${YAML_Path}          ${Empty}
-
-
+                      NOK       ${YAML_File_Path}    ${YAML_Content}          JSON          ${Empty}
 
 *** Keywords ***
 Startup
@@ -40,19 +38,19 @@ Startup
     Connect AE
 
 CONVERT_YAML_TO_JSON Template
-    [Arguments]    ${OK_NOK}    ${YAMLFilePath}    ${YAMLContent}    ${Convert_To}      ${DownloadPath}
+    [Arguments]    ${OK_NOK}    ${YAMLFilePath}    ${YAMLContent}    ${Convert_To}    ${DownloadPath}
     [Documentation]    This test tests the feature of CONVERT_YAML_TO_JSON.
     ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this variable should be OK or NOK.
     ...    -${YAMLFilePath}: This field specifies Path to a File that contains YAML content.
     ...    -${YAMLContent}: This field specifies whole YAML content.
     ...    -${Convert_To}: This field specifies the direction of the conversion.
-    ...    -${DownloadPath}: This field specifies path to save converted  YAML/JSON file.
+    ...    -${DownloadPath}: This field specifies path to save converted YAML/JSON file.
     Generate String
     Init Action    ${_CONVERT_YAML_CONTENT_ACTION}
-    Run Keyword If    '${YAMLFilePath}' == 'Invalid'    Action Set    &UC4RB_YAML_FILE_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
-    ...    &UC4RB_YAML_FILE_PATH#    ${YAMLFilePath}
-    Run Keyword If    '${YAMLContent}' == 'Invalid'    Action Set    &UC4RB_YAML_CONTENT#    ${Generated_Name}_${Time}    ELSE    Action Set
-    ...    &UC4RB_YAML_CONTENT#    ${YAMLContent}
+    Run Keyword If    '${YAMLFilePath}' == 'Invalid'    Action Set    &UC4RB_YAML_ORIGINAL_FILE_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_YAML_ORIGINAL_FILE_PATH#    ${YAMLFilePath}
+    Run Keyword If    '${YAMLContent}' == 'Invalid'    Action Set    &UC4RB_YAML_ORIGINAL_CONTENT#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_YAML_ORIGINAL_CONTENT#    ${YAMLContent}
     Action Set    &UC4RB_YAML_JSON_CONVERT#    ${CONVERT_TO}
     Run Keyword If    '${DownloadPath}' == 'Invalid'    Action Set    &UC4RB_YAML_DOWNLOAD_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_YAML_DOWNLOAD_PATH#    ${DownloadPath}

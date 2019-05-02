@@ -3,8 +3,10 @@ Resource          ../../../Env/default.txt
 
 *** Variables ***
 #--------Convert from YAML-------------------------------------------------
-${YAML_File_Path}    C:\\Users\\ritesh1583\\Desktop\\YAML_Test .yaml
+${YAML_File_Path}    C:\\Users\\ritesh1583\\Desktop\\YAML_Test.txt
+${JSON_File_Path}    C:\\Users\\ritesh1583\\Desktop\\JSON_Test.txt
 ${YAML_Content}    Empty
+${InvalidYMALContent}    j hfjwhf hewfjk\\:\ wfl \\\: lwkje fll efjlwe
 ${Download_path}    D:\\Data\\YAMLTestdata\\Dwnld.YAML
 ${Download_path1}    D:\\Data\\YAMLTestdata\\Dwnld1.YAML
 ${Download_path2}    D:\\Data\\YAMLTestdata\\Dwnld2.YAML
