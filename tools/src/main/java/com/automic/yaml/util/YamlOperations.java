@@ -109,38 +109,24 @@ public class YamlOperations implements Serializable {
 		}
 	}
 
-	public String remove(String filePath, String yamlString, String path, String downloadFilePath,
-			boolean failOnException) throws AutomicException {
+	public String remove(String content, String path, boolean failOnException) throws AutomicException {
 
-		try {
-			if (StringUtils.isEmpty(filePath) && StringUtils.isEmpty(yamlString)) {
-
-				throw new AutomicException("Either YAML file or YAML content is required");
-			}
-			String input = "";
-
-			if (StringUtils.isNotEmpty(filePath)) {
-
-				input = YamlUtils.readYAMLFromFile(filePath);
-			} else {
-
-				input = YamlUtils.readYAMLFromContent(yamlString);
-			}
-
-			String updatedYamlString = YamlUtils.deleteFromYaml(input, path);
-
-			if (StringUtils.isNotEmpty(downloadFilePath)) {
-
-				YamlUtils.writeContentToFile(downloadFilePath, updatedYamlString);
-			}
-			return updatedYamlString;
+		    try {
+			
+		    	String updatedYamlString = YamlUtils.deleteFromYaml(content, path);
+		    	return updatedYamlString;
 		} catch (JsonParseException e) {
 
 			throw new AutomicException("Invalid YAML content");
 		} catch (PathNotFoundException e) {
 
-			throw new AutomicException(
+			if(failOnException)
+				throw new AutomicException(
 					"Invalid YAML path, YAML does not contain anything on the path " + path + ", " + e.getMessage());
+			else{
+				ConsoleWriter.writeln("YAML Path does not exist.");
+				return null;
+			}
 		} catch (IOException e) {
 
 			throw new AutomicException(e.getMessage());

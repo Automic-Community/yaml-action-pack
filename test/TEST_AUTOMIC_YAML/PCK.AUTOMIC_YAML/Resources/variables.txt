@@ -3,28 +3,16 @@ Resource          ../../../Env/default.txt
 
 *** Variables ***
 #---- Promptset Fields --------------------------------------------------------------------------------------
-#----Get YAML Data/Object/Array-------------------------------------------------------------------------------------
-${YAML_File_Path}    D:\\Data\\YamlTestData\\new.yaml
-${YAML_Content}    testkey: testvalue
-${YAML_Path}      $.paragraph
-${YAML_Path1}     $.testkey
-${YAML_Array}     $.json
-${YAML_Object}    $.object
-#----Insert YAML Data-------------------------------------------------------------------------------------
-${YAMLPath2}      $.lastname
-${YAMLArrayPath}    ww
-${YAMLObjectPath}    ee
+#--------Get/Update/Delete Data/Object/Array from YAML-------------------------------------------------
+${YAML_File_Path}    C:\\Users\\ritesh1583\\Desktop\\YAML_Test .yaml
+${YAML_Content}    Empty
+${YAML_Path}      $.object
+${YAML_Path1}     Address
+${YAML_Array}     Address[0].item
+${YAML_Object}    address.name
+${YAML_Path_Not_Exist}    phone
 ${Download_path}    D:\\Data\\YAMLTestdata\\Dwnld.YAML
-${Download_path1}    D:\\Data\\YAMLTestdata\\InsertInContent.YAML
-${Download_Path_Array}    D:\\Data\\YAMLTestdata\\InsertArray.YAML
-${Download_Path_Object}    D:\\Data\\YAMLTestdata\\InsertObject.YAML
-${InsertInYAMLContentPath}    $.firstname
-${ArrayKey}       ss
-${ArrayValue}     hh
-${ObjectKey}      ff
-${ObjectValue}    rr
-${Key}            number
-${Value}          123456
-${Key1}           number
-${Value1}         123456
-#----Update YAML Data-------------------------------------------------------------------------------------
+${Download_path1}    D:\\Data\\YAMLTestdata\\Dwnld1.YAML
+${Download_path2}    D:\\Data\\YAMLTestdata\\Dwnld2.YAML
+${Download_path3}    D:\\Data\\YAMLTestdata\\Dwnld3.YAML
+
