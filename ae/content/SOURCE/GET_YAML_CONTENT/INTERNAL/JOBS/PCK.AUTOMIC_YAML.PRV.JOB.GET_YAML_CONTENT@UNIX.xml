@@ -163,7 +163,8 @@
 : SET &UC4RB_LOGGING_ERROR# = "******** GET YAML CONTENT ACTION FAILED ********"
 
 !------------------------------------------ ERROR HANDLING ----------------------------------------------------
-: INC PCK.AUTOMIC_YAML.PUB.INCLUDE.CHECK_JOBSTATUS@UNIX]]></MSCRI>
+: INC PCK.AUTOMIC_YAML.PUB.INCLUDE.CHECK_JOBSTATUS@UNIX
+: INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_FOOTER]]></MSCRI>
 </SCRIPT>
 <OUTPUTSCAN state="1">
 <Inherit>N</Inherit>
