@@ -15,6 +15,7 @@ import com.automic.yaml.constants.ExceptionConstants;
 import com.automic.yaml.exception.AutomicException;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -31,11 +32,6 @@ import com.jayway.jsonpath.PathNotFoundException;
 import net.minidev.json.JSONArray;
 
 public class YamlUtils {
-
-	public static enum FormatType {
-
-		JSON, YAML
-	}
 
 	private YamlUtils() {
 
@@ -56,10 +52,7 @@ public class YamlUtils {
 	 * @return ObjectMapper for JSON Formatting
 	 */
 	public static ObjectMapper getJSONObjectMapper() {
-
-		ObjectMapper mapper = getObjectMapper(new JsonFactory());
-		// mapper.configure(DeserializationFeature.FAIL_ON_TRAILING_TOKENS, true);
-		return mapper;
+		return getObjectMapper(new JsonFactory());
 	}
 
 	/***
@@ -81,10 +74,10 @@ public class YamlUtils {
 	 */
 	public static String writeJSONStringToYaml(String jsonString) throws AutomicException {
 
-		String YamlString = "";
-		Object JsonObject = null;
+		String yamlString = "";
+		Object jsonObject = null;
 		try {
-			JsonObject = getJSONObjectMapper().readValue(jsonString, Object.class);
+			jsonObject = getJSONObjectMapper().readValue(jsonString, Object.class);
 		} catch (JsonParseException e) {
 			throw new AutomicException("Unable to parse given YAML content", e);
 		} catch (JsonMappingException e) {
@@ -93,24 +86,24 @@ public class YamlUtils {
 			throw new AutomicException(e.getMessage(), e);
 		}
 
-		if (Objects.isNull(JsonObject)) {
+		if (Objects.isNull(jsonObject)) {
 
-			return YamlString;
+			return yamlString;
 		}
-		if (JsonObject instanceof List<?>) {
+		if (jsonObject instanceof List<?>) {
 
-			for (Object item : (List<?>) JsonObject) {
+			for (Object item : (List<?>) jsonObject) {
 
 				try {
-					YamlString += getYAMLObjectMapper().writeValueAsString(item);
+					yamlString += getYAMLObjectMapper().writeValueAsString(item);
 				} catch (JsonProcessingException e) {
 					throw new AutomicException("Unable to process given YAML content", e);
 				}
 			}
-			return YamlString;
+			return yamlString;
 		}
 		try {
-			return getYAMLObjectMapper().writeValueAsString(JsonObject);
+			return getYAMLObjectMapper().writeValueAsString(jsonObject);
 		} catch (JsonProcessingException e) {
 			throw new AutomicException("Unable to process given YAML content", e);
 		}
@@ -140,8 +133,8 @@ public class YamlUtils {
 	}
 
 	/***
-	 * Write YAML to the file Note: If file already exist on the given path, will be
-	 * override
+	 * Write YAML to the file Note: If file already exist on the given path,
+	 * will be override
 	 * 
 	 * @param filePath
 	 * @param yamlString
@@ -167,46 +160,31 @@ public class YamlUtils {
 	 * @throws IOException
 	 * @throws JsonProcessingException
 	 */
-	public static String readYAMLFromFile(String filePath) throws JsonProcessingException, IOException {
+	public static String readYAMLFromFile(String filePath) throws IOException {
 
 		ObjectMapper mapper = getYAMLObjectMapper();
-		String yamlString = mapper.writeValueAsString(
+		return mapper.writeValueAsString(
 				mapper.readValues(new YAMLFactory().createParser(new File(filePath)), new TypeReference<Object>() {
 				}).readAll());
 
-		return yamlString;
 	}
 
-	public static String readYAMLFromContent(String content) throws JsonProcessingException, IOException {
-
-		ObjectMapper mapper = getYAMLObjectMapper();
-
-		String yamlString = mapper.writeValueAsString(
-				mapper.readValues(new YAMLFactory().createParser(content), new TypeReference<Object>() {
-				}).readAll());
-
-		return yamlString;
-	}
-
-	public static String readJSONFromFile(String filePath) throws IOException {
+	public static String readJSONFromFile(String filePath) throws IOException, AutomicException {
 
 		ObjectMapper mapper = getJSONObjectMapper();
 		String jsonString;
-
-		jsonString = mapper.writeValueAsString(mapper.readValue(new File(filePath), Object.class));
-		return jsonString;
-
-	}
-
-	public static String readJSONFromContent(String content) throws IOException {
-
-		ObjectMapper mapper = getJSONObjectMapper();
-		String jsonString;
-
-		jsonString = mapper.writeValueAsString(mapper.readValue(content, Object.class));
-
-		return jsonString;
-
+		try (final JsonParser parser = new ObjectMapper().getFactory().createParser(new File(filePath))) {
+			while (parser.nextToken() != null) {
+			}
+			jsonString = mapper.writeValueAsString(mapper.readValue(new File(filePath), Object.class));
+			return jsonString;
+		} catch (JsonParseException e) {
+			ConsoleWriter.writeln(e);
+			throw new AutomicException("Exception while parsing JSON File " + filePath);
+		} catch (IOException e) {
+			ConsoleWriter.writeln(e);
+			throw new AutomicException("Exception while parsing JSON File " + filePath);
+		}
 	}
 
 	public static String convertObjectToYaml(Object object) throws JsonProcessingException {
@@ -218,8 +196,7 @@ public class YamlUtils {
 		return getYAMLObjectMapper().writeValueAsString(object);
 	}
 
-	public static <T> T convertYamlToObject(String yaml, Class<T> type)
-			throws JsonParseException, JsonMappingException, IOException {
+	public static <T> T convertYamlToObject(String yaml, Class<T> type) throws IOException {
 
 		return getYAMLObjectMapper().readValue(yaml, type);
 	}
@@ -228,14 +205,10 @@ public class YamlUtils {
 	 * 
 	 * @param filePath
 	 * @return DocumentContext
-	 * @throws JsonParseException
-	 * @throws JsonMappingException
-	 * @throws JsonProcessingException
 	 * @throws IOException
 	 * @throws AutomicException
 	 */
-	public static DocumentContext getDocumentContext(File filePath)
-			throws JsonParseException, JsonMappingException, JsonProcessingException, IOException, AutomicException {
+	public static DocumentContext getDocumentContext(File filePath) throws IOException, AutomicException {
 
 		return getDocumentContext(writeYAMLStringToJSON(readYAMLFromFile(filePath.getAbsolutePath())));
 	}
@@ -277,7 +250,8 @@ public class YamlUtils {
 	 * @return Return formated YAML {String}
 	 * @throws AutomicException
 	 */
-	public static String getValueFromYaml(String yamlString, String path) throws AutomicException {
+	public static String getValueFromYaml(String yamlString, String path)
+			throws AutomicException, PathNotFoundException {
 
 		DocumentContext context = getDocumentContext(writeYAMLStringToJSON(yamlString));
 
@@ -293,9 +267,6 @@ public class YamlUtils {
 					: getYAMLObjectMapper().writeValueAsString(result);
 		} catch (JsonProcessingException e) {
 			throw new AutomicException("Unable to get value for provided path", e);
-		} catch (PathNotFoundException e) {
-
-			throw new AutomicException("Invalid YAML path " + path, e);
 		}
 	}
 
@@ -313,7 +284,7 @@ public class YamlUtils {
 	 * @throws JsonParseException
 	 */
 	public static String addToYaml(String yamlString, String path, String key, Object value)
-			throws AutomicException, JsonParseException, JsonMappingException, JsonProcessingException, IOException {
+			throws AutomicException, IOException {
 
 		return writeJSONStringToYaml(getDocumentContext(writeYAMLStringToJSON(yamlString))
 				.put(path, key, convertYamlToObject(convertObjectToYaml(value), Object.class)).jsonString());
@@ -332,6 +303,8 @@ public class YamlUtils {
 	public static String updateYaml(String yamlString, String path, Object value, boolean isArray)
 			throws IOException, AutomicException {
 
+		getDocumentContextForYaml(yamlString).read(path);
+
 		if (isArray) {
 
 			return writeJSONStringToYaml(getDocumentContextForYaml(yamlString)
@@ -343,8 +316,9 @@ public class YamlUtils {
 
 	}
 
-	public static String deleteFromYaml(String yamlString, String path) throws AutomicException, IOException {
+	public static String deleteFromYaml(String yamlString, String path) throws AutomicException {
 
+		getDocumentContextForYaml(yamlString).read(path);
 		return writeJSONStringToYaml(getDocumentContextForYaml(yamlString).delete(path).jsonString());
 	}
 

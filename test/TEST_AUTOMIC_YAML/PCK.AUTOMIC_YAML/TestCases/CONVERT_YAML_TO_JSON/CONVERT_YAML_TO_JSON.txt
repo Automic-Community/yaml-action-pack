@@ -1,0 +1,62 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        CONVERT_YAML_TO_JSON
+Test Template     CONVERT_YAML_TO_JSON Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    YAMLFilePath         YAMLContent              Convert_To    DownloadPath
+CONVERT_YAML_TO_JSON when YAMLFilePath is valid
+                      [Tags]    main_scenarios
+                      OK        ${YAML_File_Path}    ${Empty}                 JSON          ${Download_path}
+
+CONVERT_YAML_TO_JSON when convert to is YAML
+                      OK        ${JSON_File_Path}    ${Empty}                 YAML          ${Download_path2}
+
+CONVERT_YAML_TO_JSON with invalid YAMLFilePath
+                      NOK       Invalid              ${Empty}                 JSON          ${Download_path3}
+
+CONVERT_YAML_TO_JSON with invalid YAMLContent
+                      NOK       ${Empty}             ${InvalidYMALContent}    JSON          ${Empty}
+
+CONVERT_YAML_TO_JSON with empty YAMLFilePath and YAMLContent
+                      NOK       ${Empty}             ${Empty}                 JSON          ${Empty}
+
+CONVERT_YAML_TO_JSON with value in both YAMLFilePath and YAMLContent
+                      NOK       ${YAML_File_Path}    ${YAML_Content}          JSON          ${Empty}
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "CONVERT_YAML_TO_JSON"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+CONVERT_YAML_TO_JSON Template
+    [Arguments]    ${OK_NOK}    ${YAMLFilePath}    ${YAMLContent}    ${Convert_To}    ${DownloadPath}
+    [Documentation]    This test tests the feature of CONVERT_YAML_TO_JSON.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this variable should be OK or NOK.
+    ...    -${YAMLFilePath}: This field specifies Path to a File that contains YAML content.
+    ...    -${YAMLContent}: This field specifies whole YAML content.
+    ...    -${Convert_To}: This field specifies the direction of the conversion.
+    ...    -${DownloadPath}: This field specifies path to save converted YAML/JSON file.
+    Generate String
+    Init Action    ${_CONVERT_YAML_CONTENT_ACTION}
+    Run Keyword If    '${YAMLFilePath}' == 'Invalid'    Action Set    &UC4RB_YAML_ORIGINAL_FILE_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_YAML_ORIGINAL_FILE_PATH#    ${YAMLFilePath}
+    Run Keyword If    '${YAMLContent}' == 'Invalid'    Action Set    &UC4RB_YAML_ORIGINAL_CONTENT#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_YAML_ORIGINAL_CONTENT#    ${YAMLContent}
+    Action Set    &UC4RB_YAML_JSON_CONVERT#    ${CONVERT_TO}
+    Run Keyword If    '${DownloadPath}' == 'Invalid'    Action Set    &UC4RB_YAML_DOWNLOAD_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_YAML_DOWNLOAD_PATH#    ${DownloadPath}
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE    Assert Failure
+    Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable Should Be Found    &UC4RB_YAML_OR_JSON_CONTENT#    ELSE    Action Object Variable Should Not Be Found    &UC4RB_YAML_OR_JSON_CONTENT#
+
+Teardown
+    Log    *******End Test "CONVERT_YAML_TO_JSON"*******

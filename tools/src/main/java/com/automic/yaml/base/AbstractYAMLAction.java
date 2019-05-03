@@ -17,11 +17,6 @@ import com.automic.yaml.util.YamlUtils;
  */
 public abstract class AbstractYAMLAction extends AbstractAction {
 
-	/**
-	 * Yaml File Path
-	 */
-	private String yamlFilePath;
-
 	protected String content;
 
 	public AbstractYAMLAction() {
@@ -39,13 +34,13 @@ public abstract class AbstractYAMLAction extends AbstractAction {
 	}
 
 	private void prepareCommonInputs() throws AutomicException {
-		yamlFilePath = getOptionValue(Constants.YAML_FILE_PATH);
+		String yamlFilePath = getOptionValue(Constants.YAML_FILE_PATH);
 		if (!CommonUtil.checkNotEmpty(yamlFilePath)) {
 			throw new AutomicException(
-					String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, "YAML File Path", yamlFilePath));
+					String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, "YAML File Path/Content", yamlFilePath));
 		}
 		File file = new File(yamlFilePath);
-		CommonUtil.checkFileExists(file, "YAML File Path");
+		CommonUtil.checkFileExists(file, "YAML File Path/Content");
 		if (file.length() == 0) {
 			throw new AutomicException("Provided YAML file/content is empty");
 		}

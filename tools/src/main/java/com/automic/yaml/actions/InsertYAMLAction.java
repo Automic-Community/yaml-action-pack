@@ -33,9 +33,7 @@ public class InsertYAMLAction extends AbstractYAMLAction {
 	protected void executeSpecific() throws AutomicException {
 		prepareAndValidateInputs();
 		try {
-			updatedYAML = yamlOperations.write(content, yamlTargetPosition, key, value,
-					yamlDownloadPath, true);
-
+			updatedYAML = yamlOperations.write(content, yamlTargetPosition, key, value);
 			if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {
 				YamlUtils.writeContentToFile(yamlDownloadPath, updatedYAML);
 			}
@@ -44,7 +42,7 @@ public class InsertYAMLAction extends AbstractYAMLAction {
 			ConsoleWriter.writeln("========================");
 		} catch (Exception exception) {
 			ConsoleWriter.writeln(exception);
-			throw new AutomicException(exception.getMessage());
+			throw new AutomicException("Exception occurred while inserting data in YAML");
 		}
 	}
 
@@ -55,12 +53,20 @@ public class InsertYAMLAction extends AbstractYAMLAction {
 		}
 		key = getOptionValue(Constants.KEY);
 		if (!CommonUtil.checkNotEmpty(key)) {
-			throw new AutomicException(ExceptionConstants.YAML_KEY_EMPTY_MSG);
+			throw new AutomicException(ExceptionConstants.KEY_CANNOT_BE_EMPTY);
 		}
-		value = getOptionValue(Constants.VALUE);
-		if (!CommonUtil.checkNotEmpty(value)) {
-			throw new AutomicException(ExceptionConstants.YAML_VALUE_EMPTY_MSG);
+		String temp = getOptionValue(Constants.VALUE);
+		if (!CommonUtil.checkNotEmpty(temp)) {
+			throw new AutomicException(ExceptionConstants.VALUE_CANNOT_BE_EMPTY);
 		}
+		File vFile = new File(temp);
+		CommonUtil.checkFileExists(vFile, "Value");
+		if (vFile.length() == 0) {
+			throw new AutomicException(ExceptionConstants.VALUE_CANNOT_BE_EMPTY);
+		}
+
+		value = CommonUtil.readFromFile(temp, "Value");
+
 		yamlDownloadPath = getOptionValue(Constants.YAML_DOWNLOAD_PATH);
 		if (CommonUtil.checkNotEmpty(yamlDownloadPath)) {
 			try {

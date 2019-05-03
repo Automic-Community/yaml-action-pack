@@ -3,9 +3,19 @@ Resource          ../../../Env/default.txt
 
 *** Variables ***
 #---- Promptset Fields --------------------------------------------------------------------------------------
+<<<<<<< HEAD
 #--------Get Data/Object/Array from YAML-------------------------------------------------
 ${YAML_File_Path}    D:\\Data\\YamlTestData\\YAML_Test.txt
 ${YAML_Content}    testkey:testvalue
+=======
+#--------Convert from YAML-------------------------------------------------
+${YAML_File_Path}    C:\\Users\\ritesh1583\\Desktop\\YAML_Test.txt
+${JSON_File_Path}    C:\\Users\\ritesh1583\\Desktop\\JSON_Test.txt
+${YAML_Content}    Empty
+${InvalidYMALContent}    j hfjwhf hewfjk\\:\ wfl \\\: lwkje fll efjlwe
+#--------Get Data/Object/Array from YAML-------------------------------------------------
+${YAML_Content}    Empty
+>>>>>>> ccb07f9aa1d294f84826a1e3cd4dad6c75d7b499
 ${YAML_Path}      $.object
 ${YAML_Path1}     Address
 ${YAML_Array}     Address[0].item
@@ -18,6 +28,7 @@ ${Download_path}    D:\\Data\\YAMLTestdata\\Dwnld.YAML
 ${Download_path1}    D:\\Data\\YAMLTestdata\\Dwnld1.YAML
 ${Download_path2}    D:\\Data\\YAMLTestdata\\Dwnld2.YAML
 ${Download_path3}    D:\\Data\\YAMLTestdata\\Dwnld3.YAML
+<<<<<<< HEAD
 #----Insert YAML Data-------------------------------------------------------------------------------------
 ${YAMLPosition}      $.object
 ${InsertInYAMLContentPath}    $
@@ -26,3 +37,5 @@ ${ArrayValue}     [{null_value: null}, {boolean: true}, {integer: 1}]
 ${ObjectKey}      ObjectInserted
 ${ObjectValue}    work: numbers
 ${Key}            KeyInserted
+=======
+>>>>>>> ccb07f9aa1d294f84826a1e3cd4dad6c75d7b499
