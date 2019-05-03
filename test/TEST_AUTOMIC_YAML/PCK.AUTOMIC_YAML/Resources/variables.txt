@@ -4,12 +4,11 @@ Resource          ../../../Env/default.txt
 *** Variables ***
 #---- Promptset Fields --------------------------------------------------------------------------------------
 #--------Convert from YAML-------------------------------------------------
-${YAML_File_Path}    C:\\Users\\ritesh1583\\Desktop\\YAML_Test.txt
+${YAML_File_Path}    D:\\Data\\YamlTestData\\YAML_Test.txt
 ${JSON_File_Path}    C:\\Users\\ritesh1583\\Desktop\\JSON_Test.txt
-${YAML_Content}    Empty
 ${InvalidYMALContent}    j hfjwhf hewfjk\\:\ wfl \\\: lwkje fll efjlwe
 #--------Get Data/Object/Array from YAML-------------------------------------------------
-${YAML_Content}    Empty
+${YAML_Content}    {"testkey":"testvalue"}
 ${YAML_Path}      $.object
 ${YAML_Path1}     Address
 ${YAML_Array}     Address[0].item
@@ -23,7 +22,7 @@ ${Download_path1}    D:\\Data\\YAMLTestdata\\Dwnld1.YAML
 ${Download_path2}    D:\\Data\\YAMLTestdata\\Dwnld2.YAML
 ${Download_path3}    D:\\Data\\YAMLTestdata\\Dwnld3.YAML
 #----Insert YAML Data-------------------------------------------------------------------------------------
-${YAMLPosition}      $.object
+${YAMLPosition}    $.object
 ${InsertInYAMLContentPath}    $
 ${ArrayKey}       arrayInserted
 ${ArrayValue}     [{null_value: null}, {boolean: true}, {integer: 1}]
