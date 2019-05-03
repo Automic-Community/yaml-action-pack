@@ -505,7 +505,7 @@ Note: YAML File path and YAML content are mutually exclusive.
 
 =Return Value=
 
-UC4RB_YAML_UPDATED_YAML#: ÃÂA variable that contains updated yaml value.
+UC4RB_YAML_UPDATED_YAML#: ÃÂÃÂA variable that contains updated yaml value.
 
 = Outputs =
 * Return code is 0 in case of success.
