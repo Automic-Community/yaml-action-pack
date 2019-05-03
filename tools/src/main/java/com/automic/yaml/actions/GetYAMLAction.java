@@ -17,7 +17,7 @@ public class GetYAMLAction extends AbstractYAMLAction {
 
 	public GetYAMLAction() {
 		addOption(Constants.YAML_ELEMENT_PATH, true, "Yaml Element Path");
-		addOption(Constants.FAIL_IF_PATH_NOT_EXIST, false, "Fail if Path Not Exist");
+		addOption(Constants.FAIL_IF_PATH_DOES_NOT_EXIST, false, "Fail if Path Not Exist");
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class GetYAMLAction extends AbstractYAMLAction {
 		if (!CommonUtil.checkNotEmpty(yamlElementPath)) {
 			throw new AutomicException(ExceptionConstants.YAML_PATH_EMPTY_MSG);
 		}
-		failIfPathNotExist = CommonUtil.convert2Bool(getOptionValue(Constants.FAIL_IF_PATH_NOT_EXIST));
+		failIfPathNotExist = CommonUtil.convert2Bool(getOptionValue(Constants.FAIL_IF_PATH_DOES_NOT_EXIST));
 
 	}
 }
