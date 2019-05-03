@@ -3,28 +3,26 @@ Resource          ../../../Env/default.txt
 
 *** Variables ***
 #---- Promptset Fields --------------------------------------------------------------------------------------
-#----Get YAML Data-------------------------------------------------------------------------------------
-${YAMLFilePath}    D:\\Data\\YamlTestData\\new.yaml
-${YAMLContent}    firstName: John\nlastName: Smith\nisAlive: true\nage: 27
-${YAMLPath}      $.object.key
-${YAMLPath1}      $.lastname
-${YAML_Array}     $.object.array
-${YAML_Object}    $.object
-#----Insert YAML Data-------------------------------------------------------------------------------------
-${YAMLPath2}      $.lastname
-${YAMLArrayPath}    ww
-${YAMLObjectPath}    ee
+#--------Get Data/Object/Array from YAML-------------------------------------------------
+${YAML_File_Path}    D:\\Data\\YamlTestData\\YAML_Test.txt
+${YAML_Content}    testkey:testvalue
+${YAML_Path}      $.object
+${YAML_Path1}     Address
+${YAML_Array}     Address[0].item
+${YAML_Object}    address.name
+#--------Update Data/Object/Array from YAML-------------------------------------------------
+${Value}          updated_value
+#--------Delete Data/Object/Array from YAML-------------------------------------------------
+${YAML_Path_Not_Exist}    phone
 ${Download_path}    D:\\Data\\YAMLTestdata\\Dwnld.YAML
-${Download_path1}    D:\\Data\\YAMLTestdata\\InsertInContent.YAML
-${Download_Path_Array}    D:\\Data\\YAMLTestdata\\InsertArray.YAML
-${Download_Path_Object}    D:\\Data\\YAMLTestdata\\InsertObject.YAML
-${InsertInYAMLContentPath}    $.firstname
-${ArrayKey}     ss
-${ArrayValue}     hh
-${ObjectKey}     ff
-${ObjectValue}     rr
-${Key}            number
-${Value}          123456
-${Key1}            number
-${Value1}          123456
-#----Update YAML Data-------------------------------------------------------------------------------------
+${Download_path1}    D:\\Data\\YAMLTestdata\\Dwnld1.YAML
+${Download_path2}    D:\\Data\\YAMLTestdata\\Dwnld2.YAML
+${Download_path3}    D:\\Data\\YAMLTestdata\\Dwnld3.YAML
+#----Insert YAML Data-------------------------------------------------------------------------------------
+${YAMLPosition}      $.object
+${InsertInYAMLContentPath}    $
+${ArrayKey}       arrayInserted
+${ArrayValue}     [{null_value: null}, {boolean: true}, {integer: 1}]
+${ObjectKey}      ObjectInserted
+${ObjectValue}    work: numbers
+${Key}            KeyInserted
