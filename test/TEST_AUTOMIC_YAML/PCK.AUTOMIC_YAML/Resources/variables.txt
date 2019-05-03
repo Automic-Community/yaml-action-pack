@@ -6,10 +6,9 @@ Resource          ../../../Env/default.txt
 #--------Convert from YAML-------------------------------------------------
 ${YAML_File_Path}    D:\\Data\\YamlTestData\\YAML_Test.txt
 ${JSON_File_Path}    C:\\Users\\ritesh1583\\Desktop\\JSON_Test.txt
-${YAML_Content}    Empty
 ${InvalidYMALContent}    j hfjwhf hewfjk\\:\ wfl \\\: lwkje fll efjlwe
 #--------Get Data/Object/Array from YAML-------------------------------------------------
-${YAML_Content}    testkey:testvalue
+${YAML_Content}    {"testkey":"testvalue"}
 ${YAML_Path}      $.object
 ${YAML_Path1}     Address
 ${YAML_Array}     Address[0].item
