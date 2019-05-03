@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBP AllowExternal="1" name="PCK.AUTOMIC_YAML.PUB.ACTION.UPDATE_YAML_CONTENT">
+<JOBP AllowExternal="1" name="PCK.AUTOMIC_YAML.PUB.ACTION.INSERT_YAML_CONTENT">
 <XHEADER state="1">
-<Title>Update YAML Content</Title>
+<Title>Insert YAML Content</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -13,7 +13,7 @@
 </SYNCREF>
 <ATTR_JOBP state="1">
 <Queue>CLIENT_QUEUE</Queue>
-<ChildQueue>*OWN</ChildQueue>
+<ChildQueue/>
 <StartType/>
 <ExtRepDef>1</ExtRepDef>
 <ExtRepAll>0</ExtRepAll>
@@ -53,22 +53,28 @@
 <result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
 <dynvalues>
 <dyntree>
-<node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
-<PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
-<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_DOWNLOAD_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_DOWNLOAD_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_ELEMENT_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_ELEMENT_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_IS_ARRAYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_IS_ARRAY#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">NO</UC4RB_YAML_IS_ARRAYs.00>
-<UC4RB_YAML_VALUEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_VALUE#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
+<node content="1" id="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT">
+<UC4RB_YAML_DOWNLOAD_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_DOWNLOAD_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_KEYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_KEY#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_POSITIONs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_POSITION#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_VALUEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_VALUE#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
-<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10FBA41CCE80A626FF9F1A8BC87ECEB23E141388E66BC9D730</UC4RB_SUDO_PASSWORDs.00>
 <UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
 <UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
@@ -92,7 +98,7 @@
 </PostCon>
 </postconditions>
 </task>
-<task Alias="UPDATE_YAML_CONTENT" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_YAML.PRV.JOB.UPDATE_YAML_CONTENT@WINDOWS" ParentAlias="" ParentObject="" Row="1" Text2="">
+<task Alias="INSERT_YAML_CONTENT" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_YAML.PRV.JOB.INSERT_YAML_CONTENT@WIN" ParentAlias="" ParentObject="" Row="1" Text2="">
 <checkpoint RollbackFlag="0" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
 <after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
 <when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
@@ -125,22 +131,28 @@
 </node>
 <node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
 <node content="0" id="PPRPTS" name="Parent PromptSets" parent="" type="PPROMPTSET"/>
-<node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
-<PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
-<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_DOWNLOAD_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_DOWNLOAD_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_ELEMENT_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_ELEMENT_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_IS_ARRAYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_IS_ARRAY#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">NO</UC4RB_YAML_IS_ARRAYs.00>
-<UC4RB_YAML_VALUEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_VALUE#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
+<node content="1" id="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT">
+<UC4RB_YAML_DOWNLOAD_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_DOWNLOAD_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_KEYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_KEY#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_POSITIONs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_POSITION#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_VALUEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_VALUE#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
-<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10FBA41CCE80A626FF9F1A8BC87ECEB23E141388E66BC9D730</UC4RB_SUDO_PASSWORDs.00>
 <UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
 <UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
@@ -165,14 +177,14 @@
 <params>
 <param altview="0" name="XC_P03" type="V" value=""/>
 <param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="0" name="XC_P01" type="V" value=" &amp;UC4RB_TEMP_FILE_PATH#"/>
+<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_TEMP_FILE_PATH#"/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="1" type="A" uiinfo="">
 <params>
 <param altview="0" name="XC_P04" type="V" value="DELETE_TEMP_FILE"/>
 <param altview="0" name="XC_P03" type="V" value="##911011">
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value=" &amp;UC4RB_TEMP_FILE_PATH#" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_TEMP_FILE_PATH#" vname="XC_P03"/>
 <param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
 <param name="UC4RB_DIR_FILE_RM_FAILs.00" value="YES" vname="XC_P03"/>
 <param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
@@ -209,7 +221,7 @@
 </PostCon>
 </postconditions>
 </task>
-<task Alias="UPDATE_YAML_CONTENT" BranchType="0" Col="2" Lnr="3" OType="JOBS" Object="PCK.AUTOMIC_YAML.PRV.JOB.UPDATE_YAML_CONTENT@UNIX" ParentAlias="" ParentObject="" Row="3" Text2="">
+<task Alias="INSERT_YAML_CONTENT" BranchType="0" Col="2" Lnr="3" OType="JOBS" Object="PCK.AUTOMIC_YAML.PRV.JOB.INSERT_YAML_CONTENT@UNIX" ParentAlias="" ParentObject="" Row="3" Text2="">
 <checkpoint RollbackFlag="0" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
 <after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
 <when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
@@ -242,22 +254,28 @@
 </node>
 <node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
 <node content="0" id="PPRPTS" name="Parent PromptSets" parent="" type="PPROMPTSET"/>
-<node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
-<PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
-<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_DOWNLOAD_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_DOWNLOAD_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_ELEMENT_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_ELEMENT_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_IS_ARRAYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_IS_ARRAY#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">NO</UC4RB_YAML_IS_ARRAYs.00>
-<UC4RB_YAML_VALUEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_VALUE#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
+<node content="1" id="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT">
+<UC4RB_YAML_DOWNLOAD_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_DOWNLOAD_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_KEYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_KEY#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_POSITIONs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_POSITION#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_VALUEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_VALUE#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
-<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10FBA41CCE80A626FF9F1A8BC87ECEB23E141388E66BC9D730</UC4RB_SUDO_PASSWORDs.00>
 <UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
 <UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
@@ -282,14 +300,14 @@
 <params>
 <param altview="0" name="XC_P03" type="V" value=""/>
 <param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="0" name="XC_P01" type="V" value=" &amp;UC4RB_TEMP_FILE_PATH#"/>
+<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_TEMP_FILE_PATH#"/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="1" type="A" uiinfo="">
 <params>
 <param altview="0" name="XC_P04" type="V" value="DELETE_TEMP_FILE"/>
 <param altview="0" name="XC_P03" type="V" value="##911011">
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value=" &amp;UC4RB_TEMP_FILE_PATH#" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_TEMP_FILE_PATH#" vname="XC_P03"/>
 <param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
 <param name="UC4RB_DIR_FILE_RM_FAILs.00" value="YES" vname="XC_P03"/>
 <param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
@@ -336,29 +354,35 @@
 </PreCon>
 </preconditions>
 <predecessors>
-<pre BranchType="0" Lnr="1" PreLnr="3" When="ANY_OK" type="container"/>
-<pre BranchType="0" Lnr="2" PreLnr="2" When="ANY_OK" type="container"/>
+<pre BranchType="0" Lnr="1" PreLnr="2" When="ANY_OK" type="container"/>
+<pre BranchType="0" Lnr="2" PreLnr="3" When="ANY_OK" type="container"/>
 </predecessors>
 <runtime MrtCancel="0" MrtDays="0" MrtErt="0" MrtExecute="0" MrtExecuteObj="" MrtFix="0" MrtMethodDate="0" MrtMethodErt="0" MrtMethodFix="0" MrtMethodNone="1" MrtOn="1" MrtTZ="" MrtTime="00:00" SrtErt="0" SrtFix="0" SrtMethodErt="0" SrtMethodFix="0" SrtMethodNone="1"/>
 <result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
 <dynvalues>
 <dyntree>
-<node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
-<PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
-<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_DOWNLOAD_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_DOWNLOAD_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_ELEMENT_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_ELEMENT_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
-<UC4RB_YAML_IS_ARRAYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_IS_ARRAY#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">NO</UC4RB_YAML_IS_ARRAYs.00>
-<UC4RB_YAML_VALUEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_VALUE#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT"/>
+<node content="1" id="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT">
+<UC4RB_YAML_DOWNLOAD_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_DOWNLOAD_PATH#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_KEYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_KEY#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_POSITIONs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_POSITION#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
+<UC4RB_YAML_VALUEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_VALUE#" promptsetname="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
-<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10FBA41CCE80A626FF9F1A8BC87ECEB23E141388E66BC9D730</UC4RB_SUDO_PASSWORDs.00>
 <UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
 <UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
@@ -427,13 +451,19 @@
 <Mode>1</Mode>
 </VALUE>
 </node>
-<node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" parent="PRPTS" type="PROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" prptmode="1">
+<node content="1" id="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" prptmode="1">
 <UC4RB_YAML_FILE_PATHs.00 altview="0" haslist="0"/>
 <UC4RB_YAML_CONTENTs.00 altview="0" haslist="0"/>
-<UC4RB_YAML_ELEMENT_PATHs.00 altview="0" haslist="0"/>
-<UC4RB_YAML_IS_ARRAYs.00 altview="0" haslist="0">NO</UC4RB_YAML_IS_ARRAYs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.INSERT_YAML_CONTENT" prptmode="1">
+<UC4RB_YAML_POSITIONs.00 altview="0" haslist="0"/>
+<UC4RB_YAML_KEYs.00 altview="0" haslist="0"/>
 <UC4RB_YAML_VALUEs.00 altview="0" haslist="0"/>
 <UC4RB_YAML_DOWNLOAD_PATHs.00 altview="0" haslist="0"/>
 </PRPTBOX>
@@ -442,7 +472,7 @@
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" ontop="1">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" prptmode="1">
-<UC4RB_SUDO_PASSWORDs.00 altview="0" haslist="0">--10</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_PASSWORDs.00 altview="0" haslist="0">--10FBA41CCE80A626FF9F1A8BC87ECEB23E141388E66BC9D730</UC4RB_SUDO_PASSWORDs.00>
 <UC4RB_USE_SUDOs.00 altview="0" haslist="0">None</UC4RB_USE_SUDOs.00>
 <UC4RB_SUDO_USERs.00 altview="0" haslist="0"/>
 </PRPTBOX>
@@ -479,33 +509,29 @@
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[= Action name =
-PCK.AUTOMIC_YAML.PUB.ACTION.UPDATE_YAML_CONTENT
+PCK.AUTOMIC_YAML.PUB.ACTION.INSERT_YAML_CONTENT
 
 = General description =
-This action updates the YAML file/content against the given path with the new value.
+This action will insert a new yaml element into given yaml content.
 
 = Inputs =
-- YAML File Path:             Provide the full path to the YAML file.
-- YAML Content:               Provide YAML content or a variable that contains YAML content.
-- Path to YAML Element*:      Provide the path to the YAML element to be removed.
-- Is Array:                   Specify if the element being updated is an array type.
-- Value:                      Provide the new value to be set.
-- Download Path:              Specify a path to download the modified file.
+* YAML File Path                      : Provide full path to the YAML file. E.g. D:\Content_filePath.txt
+* YAML Content                        : Provide YAML content or an AE variable that contains YAML content. E.g. &YAML#
+* Position*	                      : Specify path to the target location in the YAML to add new element. E.g $.Martin
+* Key*                                : Provide the key to the YAML element to be added. E.g. job
+* Value*                              : Provide the value to be added to the specified location. E.g. Developer
+* Download Path                       : Specify a path to download the modified file. E.g. D:\ModifiedFile.txt
 
-
-Note: YAML File path and YAML content are mutually exclusive.
+Note: YAML File Path and YAML Content are mutually exclusive.
 
 = Failure Conditions =
-* If the user provides invalid YAML file path, invalid YAML content or invalid Download Path.
-* If the user provides an invalid path to YAML element.
+* If the user provides invalid YAML file path location or invalid YAML Content.
 
 = Behavior =
-- If the value entered in Download Path is not an absolute path, the modified file is downloaded to the agent directory.
-- The downloaded file will get overwritten if it already exists.
+(none)
 
 =Return Value=
-
-UC4RB_YAML_UPDATED_YAML#: A variable that contains updated yaml value.
+UC4RB_YAML_DATA# : Inserted YAML Value
 
 = Outputs =
 * Return code is 0 in case of success.
@@ -518,31 +544,12 @@ UC4RB_YAML_UPDATED_YAML#: A variable that contains updated yaml value.
 AE logs will be displayed in the AE report.
 
 = Example =
-- YAML File Path: D:\YAML\input.yml
-- YAML Content:
-
----
--  martin:
-    name: Martin D'vloper
-    job: Developer
-    skills:
-      - python
-      - perl
-      - pascal
--  tabitha:
-    name: Tabitha Bitumen
-    job: Developer
-    skills:
-      - lisp
-      - fortran
-      - erlang
-
-- Path to YAML Element: $.martin.name
-- Is Array: YES/NO
-- Value: Martin Tester
-- Download Path: D:\YAML\outputyaml.yml
-
-]]></DOC>
+* YAML File Path                        : C:\yaml.txt
+* YAML Content                          : 
+* Position                              : $.Martin
+* Key                                   : job
+* Value                                 : Developer
+* Download Path                         : D:\ModifiedFile.txt]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

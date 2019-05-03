@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import com.automic.yaml.constants.ExceptionConstants;
 import com.automic.yaml.exception.AutomicException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.jayway.jsonpath.JsonPathException;
 import com.jayway.jsonpath.PathNotFoundException;
 
@@ -57,6 +58,21 @@ public class YamlOperations implements Serializable {
 		return YamlUtils.getValueFromYaml(content, path);
 	}
 
+	public String write(String content, String position, String key, String value) throws AutomicException {
+		String response = "";
+		try {
+			response = YamlUtils.addToYaml(content, position, key, value);
+		} catch (JsonPathException e) {
+			throw new AutomicException(ExceptionConstants.INVALID_PATH_MSG, e);
+		} catch (JsonProcessingException e) {
+			throw new AutomicException(ExceptionConstants.INVALID_YAML_FORMAT_MSG, e);
+		} catch (IOException e) {
+			throw new AutomicException(e.getMessage(), e);
+		} catch (Exception e) {
+			throw new AutomicException(e.getMessage(), e);
+		}
+		return response;
+	}
 	public String update(String content, String path, String value, boolean isArray) throws AutomicException {
 
 		try {

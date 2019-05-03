@@ -25,28 +25,22 @@ public class GetYAMLAction extends AbstractYAMLAction {
 	protected void executeSpecific() throws AutomicException {
 		prepareAndValidateInputs();
 		try {
-			String output = yamlOperations.read(content,
-					yamlElementPath, failIfPathDoesNotExist);
+			String output = yamlOperations.read(content, yamlElementPath, failIfPathDoesNotExist);
 			boolean valueExists = true;
-			if(output==null)
-			{
+			if (output == null) {
 				valueExists = false;
 			}
-			ConsoleWriter.writeln(
-					Constants.DEFAULT_VARIABLE + "::=\n" + output);
+			ConsoleWriter.writeln(Constants.DEFAULT_VARIABLE + "::=\n" + output);
 			ConsoleWriter.writeln(Constants.VALUE_EXISTS + "::=" + valueExists);
 			ConsoleWriter.writeln("========================");
-		} catch(PathNotFoundException e) {
+		} catch (PathNotFoundException e) {
 			if (failIfPathDoesNotExist) {
 				ConsoleWriter.writeln(e);
 				throw new AutomicException("Invalid YAML path " + yamlElementPath + ", " + e.getMessage());
-			}
-			else
-			{
+			} else {
 				ConsoleWriter.writeln("Provided YAML Path does not exist");
 			}
-		} 
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			ConsoleWriter.writeln(exception);
 			throw new AutomicException("Exception occurred while retrieving data from YAML");
 		}

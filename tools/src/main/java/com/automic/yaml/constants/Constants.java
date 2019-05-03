@@ -31,7 +31,6 @@ public class Constants {
 	public static final String VALUE_EXISTS = "UC4RB_YAML_VALUE_EXISTS";
 	
 	public static final String UPDATE_RUN_SUCESSFULL_MSG = "Update YAML Content executed successfully.";
-	public static final String GET_RUN_SUCESSFULL_MSG = "Get YAML Content executed successfully.";
 
 	private Constants() {
 	}
