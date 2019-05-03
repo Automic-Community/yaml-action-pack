@@ -27,7 +27,7 @@ public class UpdateYAMLAction extends AbstractYAMLAction {
 	private YamlOperations yamlOperations = new YamlOperations();
 
 	/**
-	 * Initializes a newly created {@code SendMessageAction}
+	 * Initializes a newly created {@code UpdateYAMLAction}
 	 */
 	public UpdateYAMLAction() {
 		addOption(Constants.YAML_ELEMENT_PATH, true, "Yaml Element Path");

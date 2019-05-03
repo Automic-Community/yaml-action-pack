@@ -3,8 +3,6 @@ package com.automic.yaml.actions;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.automic.yaml.base.AbstractYAMLAction;
 import com.automic.yaml.constants.Constants;
 import com.automic.yaml.constants.ExceptionConstants;
@@ -29,7 +27,7 @@ public class RemoveYAMLAction extends AbstractYAMLAction {
 	private YamlOperations yamlOperations = new YamlOperations();
 
 	/**
-	 * Initializes a newly created {@code SendMessageAction}
+	 * Initializes a newly created {@code RemoveYAMLAction}
 	 */
 	public RemoveYAMLAction() {
 		addOption(Constants.YAML_ELEMENT_PATH, true, "Path to Yaml Element");
