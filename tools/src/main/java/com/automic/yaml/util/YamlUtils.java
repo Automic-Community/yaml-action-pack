@@ -133,8 +133,8 @@ public class YamlUtils {
 	}
 
 	/***
-	 * Write YAML to the file Note: If file already exist on the given path,
-	 * will be override
+	 * Write YAML to the file Note: If file already exist on the given path, will be
+	 * override
 	 * 
 	 * @param filePath
 	 * @param yamlString
@@ -285,6 +285,7 @@ public class YamlUtils {
 	 */
 	public static String addToYaml(String yamlString, String path, String key, Object value)
 			throws AutomicException, IOException {
+		getDocumentContextForYaml(yamlString).read(path);
 
 		return writeJSONStringToYaml(getDocumentContext(writeYAMLStringToJSON(yamlString))
 				.put(path, key, convertYamlToObject(convertObjectToYaml(value), Object.class)).jsonString());

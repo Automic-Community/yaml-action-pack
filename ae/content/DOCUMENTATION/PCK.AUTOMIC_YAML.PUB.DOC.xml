@@ -20,6 +20,15 @@ YAML Content:   Provide YAML content or a variable that contains YAML content.
 
 Following actions are supported.
 
+* Action name: PCK.AUTOMIC_YAML.PUB.ACTION.GET_YAML_CONTENT
+* Action Description: This Action retrieves YAML content from specified YAML path. 
+
+* Action name: PCK.AUTOMIC_YAML.PUB.ACTION.UPDATE_YAML_CONTENT
+* Action Description: This action updates the YAML file/content against the given path with new value.
+
+* Action name: PCK.AUTOMIC_YAML.PUB.ACTION.INSERT_YAML_CONTENT
+* Action Description: This action inserts a new yaml element into given yaml content.
+
 * Action name: PCK.AUTOMIC_YAML.PUB.ACTION.REMOVE_YAML_CONTENT
 * Action Description: This action is used to remove YAML content from the given YAML element path. YAML element path can consist either data, array or object.
 
