@@ -19,9 +19,7 @@
 :   IF &RET# <> 0
 :     PRINT "Error in writing file to path : &UC4RB_TEMP_FILE_PATH#"
 :   ENDIF
-:   CLOSE_PROCESS &HND#
-
-]]></MSCRI>
+:   CLOSE_PROCESS &HND#]]></MSCRI>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC/>

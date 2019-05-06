@@ -53,6 +53,14 @@
 <result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
 <dynvalues>
 <dyntree>
+<node content="1" id="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
 <node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
 <PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
@@ -68,7 +76,7 @@
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
-<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10A61C94D6737EB659</UC4RB_SUDO_PASSWORDs.00>
 <UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
 <UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
@@ -125,6 +133,14 @@
 </node>
 <node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
 <node content="0" id="PPRPTS" name="Parent PromptSets" parent="" type="PPROMPTSET"/>
+<node content="1" id="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
 <node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
 <PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
@@ -140,7 +156,7 @@
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
-<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10A61C94D6737EB659</UC4RB_SUDO_PASSWORDs.00>
 <UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
 <UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
@@ -242,6 +258,14 @@
 </node>
 <node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
 <node content="0" id="PPRPTS" name="Parent PromptSets" parent="" type="PPROMPTSET"/>
+<node content="1" id="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
 <node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
 <PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
@@ -257,7 +281,7 @@
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
-<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10A61C94D6737EB659</UC4RB_SUDO_PASSWORDs.00>
 <UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
 <UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
@@ -343,6 +367,14 @@
 <result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
 <dynvalues>
 <dyntree>
+<node content="1" id="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA">
+<UC4RB_YAML_CONTENTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_CONTENT#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+<UC4RB_YAML_FILE_PATHs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_YAML_FILE_PATH#" promptsetname="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
 <node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
 <PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT">
@@ -358,7 +390,7 @@
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
-<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10A61C94D6737EB659</UC4RB_SUDO_PASSWORDs.00>
 <UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
 <UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
 </PRPTBOX>
@@ -427,11 +459,17 @@
 <Mode>1</Mode>
 </VALUE>
 </node>
+<node content="1" id="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_YAML.PROMPTSET.PUB.YAML_DATA" prptmode="1">
+<UC4RB_YAML_FILE_PATHs.00 altview="0" haslist="0"/>
+<UC4RB_YAML_CONTENTs.00 altview="0" haslist="0"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
 <node content="1" id="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" parent="PRPTS" type="PROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" ontop="1">
 <PRPTBOX promptset="PCK.AUTOMIC_YAML.PRV.PROMPTSET.UPDATE_YAML_CONTENT" prptmode="1">
-<UC4RB_YAML_FILE_PATHs.00 altview="0" haslist="0"/>
-<UC4RB_YAML_CONTENTs.00 altview="0" haslist="0"/>
 <UC4RB_YAML_ELEMENT_PATHs.00 altview="0" haslist="0"/>
 <UC4RB_YAML_IS_ARRAYs.00 altview="0" haslist="0">NO</UC4RB_YAML_IS_ARRAYs.00>
 <UC4RB_YAML_VALUEs.00 altview="0" haslist="0"/>
@@ -442,7 +480,7 @@
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" ontop="1">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" prptmode="1">
-<UC4RB_SUDO_PASSWORDs.00 altview="0" haslist="0">--10</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_PASSWORDs.00 altview="0" haslist="0">--10A61C94D6737EB659</UC4RB_SUDO_PASSWORDs.00>
 <UC4RB_USE_SUDOs.00 altview="0" haslist="0">None</UC4RB_USE_SUDOs.00>
 <UC4RB_SUDO_USERs.00 altview="0" haslist="0"/>
 </PRPTBOX>
