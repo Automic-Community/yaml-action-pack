@@ -464,7 +464,10 @@ This Action will retrieve YAML content from specified YAML path.
 * Path to YAML Element*	              : Provide valid path to the YAML element to retrieve its value. E.g.: $.Dev.Server
 * Fail if path does not exist         : Specify whether the action should fail, if path does not exist. Default: YES
 
-Note: YAML File Path and YAML Content are mutually exclusive.
+Note: 
+- Path to YAML element is expressed exactly same was as with JSON Path. 
+  More information about JSON Path can be found: https://goessner.net/articles/JsonPath/.
+- YAML File Path and YAML Content are mutually exclusive.
 
 = Failure Conditions =
 * If the user provides invalid YAML file path location or invalid YAML Content.

@@ -474,8 +474,10 @@ This action is used to remove YAML content from the given YAML element path. YAM
 - Fail if path does not exist: Specify whether the action should Fail or Pass if the YAML Path does not exist.
 - Download Path: Specify a path to download the modified file.
 
-= Note =
-- YAML File path and YAML content are mutual exclusive.
+Note: 
+- Position is expressed exactly same was as with JSON Path. 
+  More information about JSON Path can be found: https://goessner.net/articles/JsonPath/.
+- YAML File Path and YAML Content are mutually exclusive.
 
 = Behavior =
 - Provide "YAML File Path" and "Download Path" of the agent machine.
