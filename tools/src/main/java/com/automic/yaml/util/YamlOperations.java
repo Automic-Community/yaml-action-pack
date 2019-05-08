@@ -43,7 +43,7 @@ public class YamlOperations implements Serializable {
 		Object object = YamlUtils.getJSONObjectMapper().readValue(YamlUtils.writeYAMLStringToJSON(content),
 				Object.class);
 
-		if (Objects.nonNull(object) && object instanceof List<?> && ((List<?>) object).size() == 1) {
+		if (object!=null && object instanceof List<?> && ((List<?>) object).size() == 1) {
 
 			resultedJSONString = YamlUtils.getJSONObjectMapper().writeValueAsString(((List<?>) object).get(0));
 		} else {
