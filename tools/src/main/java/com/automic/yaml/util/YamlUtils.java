@@ -7,7 +7,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -86,7 +85,7 @@ public class YamlUtils {
 			throw new AutomicException(e.getMessage(), e);
 		}
 
-		if (Objects.isNull(jsonObject)) {
+		if (jsonObject==null) {
 
 			return yamlString;
 		}
@@ -217,17 +216,18 @@ public class YamlUtils {
 	 * 
 	 * @param jsonString
 	 * @return DocumentContext
+	 * @throws AutomicException 
 	 */
-	public static DocumentContext getDocumentContext(String jsonString) {
+	public static DocumentContext getDocumentContext(String jsonString) throws AutomicException {
 
 		DocumentContext context = JsonPath.parse(jsonString,
 				Configuration.builder().options(Option.REQUIRE_PROPERTIES).build());
 
-		if (Objects.isNull(context)) {
+		if (context==null) {
 
-			throw new RuntimeException("Invalid JSON Content");
+			throw new AutomicException("Invalid JSON Content");
 		}
-		JSONArray array = (JSONArray) context.read("$");
+		JSONArray array = context.read("$");
 
 		if (array.size() == 1) {
 
@@ -255,7 +255,7 @@ public class YamlUtils {
 
 		DocumentContext context = getDocumentContext(writeYAMLStringToJSON(yamlString));
 
-		if (Objects.isNull(context)) {
+		if (context==null) {
 
 			throw new AutomicException("Invalid Yaml file");
 		}
