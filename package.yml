@@ -1,0 +1,14 @@
+## Pack Development Configuration
+
+name: PCK.AUTOMIC_YAML
+
+source: ae/content
+
+binaries:
+  
+  - object: RESOURCES/LIBS/PCK.AUTOMIC_YAML.PRV.STORE
+    resources: 
+      - name: YAMLTOOL
+        type: BINARY
+        path: tools/target/yaml-tool.jar
+        version: 1.0.0
